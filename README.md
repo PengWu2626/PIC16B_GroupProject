@@ -53,8 +53,9 @@ The second risk is that extracting the images that contain multiple dogs or fake
 ## Tentative Timeline
 - 1~2 weeks:
   - Find the appropriate dataset
+  - Find the breeds(may be 5) that we want to identify(start with a easy task)
   - Exploratory analysis 
-  - Cleaning and preparing the dataset.
+  - Cleaning and preparing the dataset
   - Incorporating the data into the database
 - 3~4 weeks:
   - Checking the validity of images 
@@ -65,6 +66,7 @@ The second risk is that extracting the images that contain multiple dogs or fake
   - Visualizing the result and confusion matrix
   - Testing and predicting the test data
   - Testing the images of my french bulldog for fun
-  - thinking about how to improve our model.
+  - Thinking about how to improve our model
+  - Increase our breeds idfentification number
 
 
