@@ -1,4 +1,4 @@
-# PIC16B_GroupProject - Dogn Facial Recognition
+# PIC16B_GroupProject - Dog Facial Recognition
 PIC 16B Group Project
 
 ## Abstract
