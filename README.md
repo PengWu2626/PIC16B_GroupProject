@@ -1,5 +1,12 @@
 # PIC16B_GroupProject - Dog Facial Recognition
+
 PIC 16B Group Project
+
+Group Member:
+- Peng Wu
+- Weixin Ye
+-
+
 
 ## Abstract
 There is way too many dog breed, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify what dog it is. 
