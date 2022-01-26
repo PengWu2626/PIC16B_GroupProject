@@ -39,7 +39,7 @@ After completing this project, we will learn how to apply the techniques from de
 
 
 ## Risks
-The first risk is that we have over one hundred species. Therefore, we are not sure of the accuracy of detecting similar species; moreover, we might include too many features that cause the overfitting since there are many species.
+The first risk is that we have over one hundred species. Therefore, we are not sure of the accuracy of detecting similar species; moreover, we might include too many features that cause the overfitting since there are many species. Also there are a lot of mix breed dogs, it will make our project harder.
 
 The second risk is that extracting the images that contain multiple dogs or fake dogs might require a more complex algorithm.
 
