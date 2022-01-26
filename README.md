@@ -47,8 +47,8 @@ The second risk is that extracting the images that contain multiple dogs or fake
 1. Any people, especially dog lovers, can use this product to help them identify their images of the dog. People can take a picture of the dog they like on the street and check the breed immediately. 
 2. We do not think any group of people will be harmed from using this product.
 3. 
-  - Different dog breeds may have various behaviors. Understanding their behaviors may help owners know and train their pets better.
-  - A dog breed will determine what their drive will be. Without proper outlets, dogs can become a nuisance. Therefore, knowing this may help you figure out if an owner's house will fit them.
+    - Different dog breeds may have various behaviors. Understanding their behaviors may help owners know and train their pets better.
+    - A dog breed will determine what their drive will be. Without proper outlets, dogs can become a nuisance. Therefore, knowing this may help you figure out if an owner's house will fit them.
 
 ## Tentative Timeline
 - 1~2 weeks:
