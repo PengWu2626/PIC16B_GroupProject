@@ -56,7 +56,7 @@ The second risk is that extracting the images that contain multiple dogs or fake
 3. 
     - Different dog breeds may have various behaviors. Understanding their behaviors may help owners know and train their pets better.
     - A dog breed will determine what their drive will be. Without proper outlets, dogs can become a nuisance. Therefore, knowing this may help you figure out if an owner's house will fit them.
-
+    - To identify the breed of the dog is important. Some people they do not know about dogs, so they buy or adopt a dog just because the the pictures of them are cute or pretty. Later they may abandon them because of their behavior. If they can know what breed the dog is and what characters they have, it will help them make right decisions. 
 ## Tentative Timeline
 - 1~2 weeks:
   - Find the appropriate dataset
