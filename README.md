@@ -9,7 +9,7 @@ Group Member:
 
 
 ## Abstract
-There is way too many dog breed, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify what dog it is. 
+There is way too many dog breed, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify what the dog is. Moreover, it will help them make right decisions before they want them.
 Our initial approach:
 1. Find the appropriate dataset
 2. Exploratory analysis
