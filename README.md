@@ -5,7 +5,7 @@ PIC 16B Group Project
 Group Member:
 - Peng Wu
 - Weixin Ye
--
+- Miao Wang
 
 
 ## Abstract
