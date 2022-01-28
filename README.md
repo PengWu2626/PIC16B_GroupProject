@@ -1,5 +1,5 @@
 # PIC16B_GroupProject - Dog Facial Recognition
-![dog facial recog](https://humanepro.org/sites/default/files/styles/article_new/public/images/post/Scoop_FaceValue_cover.jpg)
+<img src="https://humanepro.org/sites/default/files/styles/article_new/public/images/post/Scoop_FaceValue_cover.jpg" alt="dog facial recognition" width="200"/>
 ### Group Member:
 - Peng Wu
 - Weixin Ye
