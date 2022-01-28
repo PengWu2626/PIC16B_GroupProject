@@ -1,48 +1,61 @@
 # PIC16B_GroupProject - Dog Facial Recognition
 
-PIC 16B Group Project
-
-Group Member:
+### Group Member:
 - Peng Wu
 - Weixin Ye
 - Miao Wang
-
+- Jiamu Liu
 
 ## Abstract
-There is way too many dog breed, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify what the dog is. Moreover, it will help them make right decisions before they want them.
+There is way too many dog breeds, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify what possible breeds the dog belongs to. Moreover, it will prompt the users some basic charateristics and features of the dog breeds, so that the user get to know the dog better. 
 Our initial approach:
-1. Find the appropriate dataset
-2. Exploratory analysis
-3. Cleaning and preparing the dataset.
+
+### Prepare data
+1. Looking for appropriate datasets
+2. Doing exploratory analysis
+3. Cleaning and preparing related data
 4. Incorporating the data into the database
-5. Checking the validity of images 
-6. Pick the model
-7. Split Training and testing data
+
+### Pick and train the model
+5. Checking iamges validity
+6. Picking a proper model
+7. Splitting training and testing data
 8. Training and fitting the model
 9. Visualizing the result and confusion matrix
+
+### Test result
 10. Testing and predicting the test data
 11. Testing the images of my french bulldog for fun
 
 ## Planned Deliverables
-**Full success**: We will build a local app that allows users to upload the images and show the possibility breed of the dogs. This local app should also prompt the user if the image is not the dog.
+**Full success**: We will build a local app that allows users to upload the dog images and show the possible breeds. This local app should warn the user if the image is not a dog.
 
-**Partial success**:  In the first stage, we will identify a few breeds and suppose users will upload images with no more than one dog. We will not build a local app. Instead, we will use Jupyter notes to show our code and explain how we construct the machine-learning algorithm to classify the dog breed. 
+**Partial success**:  In the first stage, we will accept images with no more than one dog and identify only a few certain breeds. Instead of developing a local app, we will use Jupyter notes to show our core code and explain how to construct the machine-learning algorithm.
 
 ## Resources Required
-We need a dataset that contains a variety of dog breeds. We will use the data set from Kaggle. 
+We need datasets that contain a variety of dog breeds, and here are two of them which we might use.
 - https://www.kaggle.com/kingburrito666/largest-dog-breed-data-set
 - https://www.kaggle.com/c/dog-breed-identification
 
-Those datasets include most dog species which reduced the possibility of verifying unknown breeds from the user. 
 
 ## Tools and Skills Required
-We will use the TensorFlow package and Convolutional Neural Networks (CNN) to classify and extract features from images. We might use more than one model to compare the accuracy. For example, one of our models might be from the sequential model, `tf.keras.models.Sequential`
-Since our dataset has many images, we need to use the database to help us manage and avoid the memory problem on our computer; we also need to know some SQL techniques to access the data.
+- [TensorFlow](https://www.tensorflow.org/) package and Convolutional Neural Networks (CNN) will be employed to classify and extract features from images. We might use more than one model to compare the accuracy. One of our models might be from the sequential model, `tf.keras.models.Sequential`. 
 
+- Database(e.x. mySQL) and related techniques will be employed to avoid OOM(out of memory).
 
 
 ## What You Will Learn
-After completing this project, we will learn how to apply the techniques from deep learning in classifying image-related problems. We also can build similar projects such as gender or other species identification. This project will show how to use Convolutional Neural Networks (CNN) algorithm to assign importance labels to images and differentiate one from the other. You will know how tensor is pretty similar to a Numpy array and how layers act as a function that takes in one tensor and spits out another tensor with different shapes. Finally, you will learn how to create a complex dataset visualization too. 
+- Deep learning in classifying image-related problems - In the future, we could also build similar projects such as gender or other species identification program.
+
+- Neural Networks Technique - Learn how to use Convolutional Neural Networks (CNN) algorithm to assign important labels to images and differentiate one from another. 
+
+- TensorFlow - Learn the similarity between TensorFlow and Numpy array and how layers act as a function that takes in one TensorFlow and spits out another TensorFlow with different shapes. 
+
+- Database techniques - Learn how to create database; import, filter, sort, and export data; dataset visualization. For example, querying a record from database could be an essential skill we will learn.
+
+- Version control - Learn how to develop a comprehensive project with team concurrently via Git and Github. For example, git clone, add, stage, commit, fetch, pull, rebase, creating branch, and solving merging conflicts could be essential skills we will learn.
+
+- App Development - Learn how to develope a simple app to fullfill end-user needs.
 
 
 ## Risks
@@ -75,5 +88,3 @@ The second risk is that extracting the images that contain multiple dogs or fake
   - Testing the images of my french bulldog for fun
   - Thinking about how to improve our model
   - Increase our breeds idfentification number
-
-
