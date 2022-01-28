@@ -68,11 +68,11 @@ The third risk is maintaining devices compatibility. Our app may not run on spec
 
 ## Ethics
 1. Any people, especially dog lovers, can use this product to help them identify their images of the dog. People can take a picture of the dog they like on the street and check the breed immediately. 
-2. We do not think any group of people will be harmed from using this product.
+2. Since machine learning sometimes leads to error, it tends to "translate" some rare breeds to popular breeds. Thus, the famous breeds have more presence in front of humans, resulting in a mere exposure effect. Dogs that belong to rare breeds would gradually leave people's sight. We hope to set a threshold and only show the result if the app is confident with the picture's content.
 3. 
     - Different dog breeds may have various behaviors. Understanding their behaviors may help owners know and train their pets better.
     - A dog breed will determine what their drive will be. Without proper outlets, dogs can become a nuisance. Therefore, knowing this may help you figure out if an owner's house will fit them.
-    - To identify the breed of the dog is important. Some people they do not know about dogs, so they buy or adopt a dog just because the the pictures of them are cute or pretty. Later they may abandon them because of their behavior. If they can know what breed the dog is and what characters they have, it will help them make right decisions. 
+    - To identify the breed of the dog is important. Some people they do not know about dogs, so they buy or adopt a dog just because the the pictures of them are cute or pretty. Later they may abandon them because of their behavior. If they can know what breed the dog is and what characters they have, it will help them make right decisions.
 
 
 ## Tentative Timeline
