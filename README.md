@@ -8,7 +8,7 @@
 - Jiamu Liu
 
 ## Abstract
-TThere are way too many dog breeds, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify the dog's breeds. Moreover, it will prompt the users with some essential characteristics and features of the dog breeds to get to know the dog better. 
+There are way too many dog breeds, and many dogs are similar. So this project will build an algorithm to identify the user-uploaded images to classify the dog's breeds. Moreover, it will prompt the users with some essential characteristics and features of the dog breeds to get to know the dog better. 
 Our initial approach:
 
 ### Prepare data
