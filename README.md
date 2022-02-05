@@ -29,20 +29,22 @@ Our initial approach:
 11. Testing the images of my french bulldog for fun
 
 ## Planned Deliverables
-**Full success**: We will build a local app that allows users to upload the dog images and show the possible breeds. This local app should warn the user if the image is not a dog.
+**Full success**: We will build a web app that allows users to upload the dog images and show the possible breeds. This web app should warn the user if the image is not a dog.
 
-**Partial success**:  In the first stage, we will accept images with one dog and identify only a few certain breeds. Instead of developing a local app, we will use Jupyter notes to show our core code and explain how to construct the machine-learning algorithm.
+**Partial success**:  In the first stage, we will accept images with one dog and identify only a few certain breeds. Instead of developing a web app, we will use Jupyter notes to show our core code and explain how to construct the machine-learning algorithm.
 
 ## Resources Required
 We need datasets that contain a variety of dog breeds, and here are two of them which we might use.
 - https://www.kaggle.com/kingburrito666/largest-dog-breed-data-set
 - https://www.kaggle.com/c/dog-breed-identification
 
+## Webapp framework
+We will use [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework)) to build our web application and deploy it on [Heroku](https://www.heroku.com/) platform.
 
 ## Tools and Skills Required
 - [TensorFlow](https://www.tensorflow.org/) package and Convolutional Neural Networks (CNN) will be employed to classify and extract features from images. We might use more than one model to compare the accuracy. One of our models might be from the sequential model, `tf.keras.models.Sequential`. 
 
-- Database(e.x. mySQL) and related techniques will be employed to avoid OOM(out of memory).
+- Database(e.x. SQLite) and related techniques will be employed to avoid OOM(out of memory).
 
 
 ## What You Will Learn
