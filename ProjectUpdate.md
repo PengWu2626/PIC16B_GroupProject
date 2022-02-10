@@ -1,4 +1,4 @@
-## Feb.09 - Jiamu
+## Feb.09
 
 ## Webapp Page Design - based on Flask Framework and Blog - Web Development
 
