@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="uploader">
-    <div class="notice">
-        <p>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-                {% endif %}
-            {% endwith %}
-        </p>
-    </div>
+    <div class="uploader">
+        <div class="notice">
+            <p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% endwith %}
+            </p>
+        </div>
 
 
     <div class="form">
@@ -33,4 +33,16 @@
             </p>
         </form>
     </div>
+
+    <div class="tmp">
+        <h2 id="feb-09-jiamu">Feb.09 - Jiamu</h2>
+        <h2 id="webapp-page-design-based-on-flask-framework-and-blog-web-development">Webapp Page Design - based on Flask Framework and Blog - Web Development</h2>
+        <ol>
+        <li>Homepage: allow users to upload an image to the server; an alert will be given if the uploaded file is not an image.</li>
+        <li>If an image has been uploaded successfully, it will be saved at the server for further analysis. Currently, it is stored at &#39;../static/uploads/&#39; folder on the server-side.</li>
+        <li>Touch up by using Bootstrap and the website now is reader-friendly(responsive enabled)</li>
+        </ol>
+    </div>
+
+
 {% endblock %}

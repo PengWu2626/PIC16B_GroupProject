@@ -5,9 +5,13 @@
 {% endblock %}
 
 {% block content %}
+  <p>2. If an image has been uploaded successfully, it will be saved at the server for further data analysis. Currently, it is stored at '../static/uploads/' folder on the server-side.</p>
+  <p>3. Touch up by using Bootstrap(CSS) and the website now is reader-friendly(responsive design enabled)</p>
+
   {% if filename %}
     <div>
         <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded image" height="300" >
     </div>
   {% endif %}
+  
 {% endblock %}
