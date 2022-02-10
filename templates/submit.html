@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Submit{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<!-- a form used for user to submit message and name -->
+  <form method="post" id="form">
+      <label for="label-msg">Your message:</label>
+      <br>
+      <input type="text" name="message" id="message">
+      <br>
+      <label for="label-name">Your name:</label>
+      <br>
+      <input type="text" name="handle" id="handle">
+      <br><br>
+      <input type="submit" value="Submit">
+  </form>
+{% endblock %}

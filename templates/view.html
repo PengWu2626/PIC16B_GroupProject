@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}View{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% if filename %}
+    <div>
+        <img src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+  {% endif %}
+{% endblock %}
