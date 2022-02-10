@@ -2,10 +2,12 @@ import sqlite3
 from sqlite3 import Error
 from flask import Flask, g, render_template, request
 
-# core methods
+"""
+furture use: core methods for data analysis
+"""
 
 # create a database
-def get_message_db():
+def create_db():
 
     # check if 'message_db' exists, if not then establish one
     if 'user_db' not in g:
@@ -23,7 +25,7 @@ def get_message_db():
     """ 
 
     # create a table - 'Messages'
-    g.message_db.cursor().executescript(cmd)
-    g.message_db.close()
+    g.create_db.cursor().executescript(cmd)
+    g.create_db.close()
     
-    return g.message_db
+    return g.create_db

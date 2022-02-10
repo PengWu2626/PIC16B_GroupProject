@@ -41,6 +41,10 @@ def upload_image():
 def view():
     return render_template('view.html')
 
+@app.route('/about/')
+def about():
+    return render_template('about.html')
+
 @app.route('/display/<filename>')
 def display_image(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)

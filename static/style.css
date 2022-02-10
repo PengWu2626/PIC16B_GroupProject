@@ -5,15 +5,8 @@ html {
 
 body {
     text-align: center;
-    max-width: 500px;
     margin: 0 auto;
-}
-
-h1 {
-    color: rgb(161, 34, 34);
-    font-family:monospace;
-    margin: 1rem 0;
-    text-align: center;
+    background: rgb(224, 211, 193);
 }
 
 h3 {
