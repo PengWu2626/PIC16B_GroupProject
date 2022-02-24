@@ -1,13 +1,10 @@
 import cv2
 import imutils
 
-UPLOAD_FOLDER = 'static/uploads/'
-DEST_FOLDER = 'static/faces/'
 
-
-def faceDetector(file):
+def faceDetector(file, upload_folder, dest_folder):
     face_cas = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    face_img = cv2.imread(UPLOAD_FOLDER + file)
+    face_img = cv2.imread(upload_folder + file)
     face_img = imutils.resize(face_img, width=580)
 
     # grayscale img
@@ -16,11 +13,11 @@ def faceDetector(file):
     face_detected = face_cas.detectMultiScale(face_grey_scale, 1.1, 4)
 
     # process img
-    for (x, y, w, h) in face_detected:
-        cv2.rectangle(face_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+    for (x, y, width, height) in face_detected:
+        cv2.rectangle(face_img, (x, y), (x+width, y+height), (255, 0, 255), 3)
 
     # write result
-    cv2.imwrite(DEST_FOLDER + file, face_img)
+    cv2.imwrite(dest_folder + file, face_img)
 
 
-# faceDetector('face.jpg')
+# faceDetector('face.jpg', 'static/uploads/', 'static/faces/')

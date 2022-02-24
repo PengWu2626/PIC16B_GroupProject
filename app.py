@@ -7,6 +7,7 @@ import face_detect
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static/uploads/'
+DEST_FOLDER = 'static/faces/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app.secret_key = "secret key"
@@ -54,7 +55,8 @@ def about():
 
 @app.route('/display/<filename>')
 def display_image(filename):
-    face_detect.faceDetector(filename)
+    # face detect
+    face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
 
     return redirect(url_for('static', filename='faces/' + filename), code=301)
 
