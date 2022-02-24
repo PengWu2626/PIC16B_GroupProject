@@ -13,11 +13,14 @@ def faceDetector(file, upload_folder, dest_folder):
     face_detected = face_cas.detectMultiScale(face_grey_scale, 1.1, 4)
 
     # process img
+    count = 0
     for (x, y, width, height) in face_detected:
         cv2.rectangle(face_img, (x, y), (x+width, y+height), (255, 0, 255), 3)
+        count += 1
 
     # write result
     cv2.imwrite(dest_folder + file, face_img)
 
+    return count
 
 # faceDetector('face.jpg', 'static/uploads/', 'static/faces/')

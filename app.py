@@ -56,8 +56,7 @@ def about():
 @app.route('/display/<filename>')
 def display_image(filename):
     # face detect
-    face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
-
+    num = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
     return redirect(url_for('static', filename='faces/' + filename), code=301)
 
 
