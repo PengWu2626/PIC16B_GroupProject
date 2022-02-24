@@ -2,11 +2,11 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 import urllib.request
 import os
 from werkzeug.utils import secure_filename
+import face_detect
 
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static/uploads/'
-DEST_FOLDER = 'static/faces/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app.secret_key = "secret key"
@@ -54,6 +54,8 @@ def about():
 
 @app.route('/display/<filename>')
 def display_image(filename):
+    face_detect.faceDetector(filename)
+
     return redirect(url_for('static', filename='faces/' + filename), code=301)
 
 

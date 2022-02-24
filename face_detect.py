@@ -5,9 +5,9 @@ UPLOAD_FOLDER = 'static/uploads/'
 DEST_FOLDER = 'static/faces/'
 
 
-def faceDetector():
+def faceDetector(file):
     face_cas = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    face_img = cv2.imread(UPLOAD_FOLDER + 'face.jpg')
+    face_img = cv2.imread(UPLOAD_FOLDER + file)
     face_img = imutils.resize(face_img, width=580)
 
     # grayscale img
@@ -20,4 +20,7 @@ def faceDetector():
         cv2.rectangle(face_img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
     # write result
-    cv2.imwrite(DEST_FOLDER + "face.jpg", face_img)
+    cv2.imwrite(DEST_FOLDER + file, face_img)
+
+
+# faceDetector('face.jpg')
