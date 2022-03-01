@@ -1,13 +1,6 @@
 # PIC16B_GroupProject - Dog Facial Recognition
 <img src="https://humanepro.org/sites/default/files/styles/article_new/public/images/post/Scoop_FaceValue_cover.jpg" alt="dog facial recognition" width="350"/>
 
-**Heroku 
-Only works for**
-- DogTime Information page
-- Find Your Best Dog page
-- https://pic16b-dog-facial-recognition.herokuapp.com
-
-
 ### Group Member:
 - Peng Wu
 - Weixin Ye
