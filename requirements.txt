@@ -50,8 +50,8 @@ tenacity==8.0.1
 tensorboard==2.8.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow-macos
-tensorflow-metal
+#tensorflow-macos
+#tensorflow-metal
 termcolor==1.1.0
 tf-estimator-nightly==2.8.0.dev2021122109
 typing_extensions==4.1.1
