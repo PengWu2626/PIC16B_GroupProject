@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+  <h3>{% block title %}Drag an Image{% endblock %}</h3>
+{% endblock %}
+
+{% block content %}
+
+  {{ dropzone.load_css() }}
+  {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+<body>
+
+<!--
+DropZone
+https://flask-dropzone.readthedocs.io/en/latest/
+some dropzone examples
+https://github.com/greyli/flask-dropzone/tree/master/examples
+-->
+
+<form action="{{ url_for('drag_upload') }}" enctype="multipart/form-data" method="post">
+  {{ dropzone.create() }}
+  <input type="submit" id="dragsubmit_btn" value="Go">
+</form>
+
+  {{ dropzone.load_js() }}
+  {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+     custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 1,') }}
+  
+</body>
+
+
+
+
+{% endblock %}
