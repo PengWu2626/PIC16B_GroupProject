@@ -19,7 +19,9 @@ def faceDetector(file, upload_folder, dest_folder):
         count += 1
 
     # write result
-    cv2.imwrite(dest_folder + file, face_img)
+    # if find any face
+    if(count):
+        cv2.imwrite(dest_folder + file, face_img)
 
     return count
 
