@@ -60,3 +60,39 @@ div.doc {
   background-color: #ffffff;
   padding: 20px;
 }
+
+
+.mytable {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table {
+  border-spacing: 0;
+  background-color: whitesmoke;
+  width:70%; 
+  margin-left:15%; 
+  margin-right:15%;
+}
+
+.table_row:nth-child(even){
+  background-color: #e5e5e5;
+}
+
+.table_header{
+    text-align:center;
+    color: rgb(202, 51, 51);
+}
+
+.table_element{
+    padding: 8px;
+}
+
+#hiding_results {
+  display: none;
+  width: 100%;
+
+  text-align: center;
+  background-color: rgb(224, 211, 193);
+
+}
