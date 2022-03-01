@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/findyourdogstyle.css') }}">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+
+<h3>{% block title %}Recommendtion{% endblock %}</h3>
+</head>
+{% endblock %}
+
+{% block content %}
+<body>           
+<div class="split left">
+    <h4 style ="font-family: Audiowide, sans-serif; font-size: 50x;">We suggest picking 2-4 of the characteristics</h4> 
+    <p style ="font-family: Audiowide, sans-serif; font-size: 15px;">0 means >=0, any specific number # means == #</p>
+    <br>
+    <form action='/findyourdog' method="post">
+        <!-- make 26 characteristics slider -->
+        {% for key, value in dogmap.items() %}
+        <div class="slidecontainer">
+            <h6 style ="font-family: Audiowide, sans-serif; font-size: 15px;">{{value}}:</h6>
+            <input type="range" min="0" max="5" value ="0" class="slider" id="characteristic_slider" name="characteristic_slider" >
+            <label for ="characteristic_slider" > <span class="limit"></span></label>
+            <br>
+            <br>
+        </div>
+         {% endfor %}
+
+        <!-- https://stackoverflow.com/questions/47006027/display-values-of-multiple-input-type-range-in-one-page -->
+        <script>
+            function updateLabel() {
+            var limit = this.parentElement.getElementsByClassName("limit")[0];
+            limit.innerHTML = this.value;
+            }
+            var slideContainers = document.getElementsByClassName("slidecontainer");
+
+            for (var i = 0; i < slideContainers.length; i++) {
+            var slider = slideContainers[i].getElementsByClassName("slider")[0];
+            updateLabel.call(slider);
+            slider.oninput = updateLabel; }
+        </script>
+
+        <button type="submit"> Submit </button>
+        <br>
+        <br>
+        <br> 
+        <br>
+        <br>
+        <br>
+    </form>
+  </div>
+<p>
+
+<div class="split right">
+    <h6 style ="font-family: Audiowide, sans-serif; font-size: 40px;">Matching Result</h6>
+    <br>
+      <!-- check if find ant dog recommendations-->
+        {% if find_any %}
+        <!-- loop over each dog name in recommendations list-->
+        {% for dog in dog_recommendations %}
+        <br>
+        <p style ="font-family: Audiowide, sans-serif; font-size: 20px;"><strong>{{dog[0]}}</strong></p>
+        <img style ="border-radius: 50px;" src='{{ dog[1]}}'  width="300" height="300"> 
+        <br>
+        <br>
+        {% endfor %}
+        <!-- end loop over each dog name in recommendations list-->
+        {% else %}
+        <p> No matching dog.</p>
+        {% endif %}
+        <!-- end check if find ant dog recommendations-->
+</div>
+</body>
+{% endblock %}
