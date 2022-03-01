@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow as tf
 
 
-import face_detect
+#import face_detect
 import dog_recommendation
 import dog_classes
 import dogtime_barcharts
@@ -156,9 +156,9 @@ def about():
 @app.route('/display/<filename>')
 def display_image(filename):
     # face detect
-    num = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
-    if (num):
-        return redirect(url_for('static', filename='faces/' + filename), code=301)
+   # num = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
+    #if (num):
+   #     return redirect(url_for('static', filename='faces/' + filename), code=301)
     return redirect(url_for('static', filename='uploads/' + filename), code=302)
 
 
@@ -177,8 +177,9 @@ def upload_image():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # flash('The image has been uploaded successfully!')
-        
-        any_face = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
+
+        any_face=0
+        #any_face = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
 
         uploaded_image_path = (os.path.join(UPLOAD_FOLDER, file.filename))
         catordog, catordog_confidence = cat_or_dog(uploaded_image_path)
@@ -280,7 +281,7 @@ def get_gallery():
         user_clicked_image_path = (os.path.join(UPLOAD_FOLDER, user_clicked_image_name))
 
         any_face = 0
-        any_face = face_detect.faceDetector(user_clicked_image_name, UPLOAD_FOLDER, DEST_FOLDER)
+        #any_face = face_detect.faceDetector(user_clicked_image_name, UPLOAD_FOLDER, DEST_FOLDER)
 
         catordog, catordog_confidence = cat_or_dog(user_clicked_image_path)
 
