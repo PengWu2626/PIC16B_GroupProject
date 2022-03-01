@@ -1,15 +1,325 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<head>
+<!-- Learned this from https://www.w3schools.com/ -->
+  <!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/viewstyle.css') }}">
+
   <h3>{% block title %}View{% endblock %}</h3>
+</head>
 {% endblock %}
 
 {% block content %}
 
   {% if filename %}
-    <div>
-        <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded image" height="300" >
+  <div class="flip-box">
+    <div class="flip-box-inner">
+      <div class="flip-box-front">
+        <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded image" style="width:300px;height:300px" >
+      </div>
+      <div class="flip-box-back">
+        <h2>Hi</h2>
+        <p> It looks like a {{catordog}} with {{ catordog_confidence }}% confidence.</p>
+      </div>
     </div>
+  </div>
   {% endif %}
-  
+
+  <br>
+  <p id = "cat_dog"> Flip to show the confidence. <br> Thanks for the image!  It looks like a {{catordog}}.</p>
+  <br>
+
+  {% if catordog == 'cat' %}
+  <script>
+    function test() {
+      alert("It might be wrong that our algorithm predicted this image is CAT! But, if it is a cat, let's show any dog that looks like this cat.");
+    }
+    window.addEventListener('load', event => {
+      test();
+    });
+  </script>
+  {% endif %}
+
+<!-- check any detected -->
+{% if any_face %}
+<p>FIND FACE!</p>
+  <!-- detected face, create a button to ask user displaying prediction or not -->
+  <button onclick="askShowPrediction()">Continue to show the prediction (Double click first time)</button>
+  <script>
+    function askShowPrediction() {
+      var x = document.getElementById("hiding_results");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+<!-- No face detected, using JavaScript function continueShowPrediction()
+     to show the prediction result without asking -->
+{% else %}
+  <script>
+    function continueShowPrediction() {
+      var x = document.getElementById("hiding_results");
+      x.style.display = "block"
+    }
+    window.addEventListener('load', event => {
+      continueShowPrediction();
+  });
+  </script>
+{% endif %}
+
+
+<!-- starting hiding results-->
+<div id="hiding_results">
+
+  <!-- If cat, change title -->
+  <script>
+    function changeTitleCatOrDog() {
+      var change
+      if ('{{catordog}}' == 'cat') {
+        change = "Meow, I would be:";
+      }
+      else{
+        change = "Top Three Dog Breed Predictions";
+      }
+      document.getElementById("threedogs_title").innerHTML = change;
+    }
+    window.addEventListener('load', event => {
+      changeTitleCatOrDog();
+  });
+  </script>
+  <!-- end change title -->
+
+  <!-- Cat or Dog model predicted wrong; Something wrong let user change -->
+  <button class = 'change_btn' onclick='askChange()'>Something wrong you want to change?</button>
+
+    <script>
+    function askChange() {
+      if (confirm("Ok to change?")) {
+
+        let original_title = document.getElementById("threedogs_title").value;
+
+        if ('{{catordog}}' == 'cat') {
+          document.getElementById("cat_dog").innerHTML = "Thanks for the correction! <br> I am Dog";
+          document.getElementById("threedogs_title").innerHTML = "Top Three Dog Breed Predictions";
+        }
+        else {
+          document.getElementById("cat_dog").innerHTML = "Thanks for the correction! <br> I am Cat";
+          document.getElementById("threedogs_title").innerHTML = "Meow, I would be:";
+
+        }
+      } else {
+        document.getElementById("cat_dog").innerHTML = "Thanks for the image!  It looks like a {{catordog}}";
+        if ('{{catordog}}' == 'cat'){
+          document.getElementById("threedogs_title").innerHTML = "Meow, I would be:";
+        }
+          else {
+            document.getElementById("threedogs_title").innerHTML = "Top Three Dog Breed Predictions";
+          }
+        }
+      }
+    </script>
+  <!-- end Cat or Dog model predicted wrong; Something wrong let user change -->
+
+  <br>
+  <br>
+
+  <!-- if the predicted dog breed in dogtime, show the dog characteristics -->  
+  {% if in_df %} 
+  <br>
+  <h1>{{which_breed}}</h1>
+  <b>The following <span class="fa fa-star checked"></span> information are scraped from <a href ='https://dogtime.com/dog-breeds/profiles'> <b>DogTime</b></a> </b>
+
+  <br>
+  <br>
+
+  <!-- showing the dog characteristics-->
+  <!-- There is a better way to loop and show stars, if we have more time, we will improve it  -->
+  <!-- Adaptability -->
+  {% for info in dog_time_info[0:5] %}
+  <strong>{{info[0]}}</strong>
+  <!-- pink stars-->
+  {% for i in range(info[1]) %}
+  <span class="fa fa-star checked"></span>
+  {% endfor %}
+  <!-- black stars-->
+  {% for i in range( 5- info[1]) %}
+  <span class="fa fa-star"></span>
+  {% endfor %}
+  &nbsp;&nbsp;&nbsp;
+  {% endfor %}
+  <br>
+
+  <!-- All Aroubd Friendliness-->
+  {% for info in dog_time_info[6:9] %}
+  <strong>{{info[0]}}</strong>
+  <!-- pink stars-->
+  {% for i in range(info[1]) %}
+  <span class="fa fa-star checked"></span>
+  {% endfor %}
+  <!-- black stars-->
+  {% for i in range( 5- info[1]) %}
+  <span class="fa fa-star"></span>
+  {% endfor %}
+  &nbsp;&nbsp;&nbsp;
+  {% endfor %}
+  <br>
+
+  <!-- Health And Grooming Needs-->
+  {% for info in dog_time_info[10:15] %}
+  <strong>{{info[0]}}</strong>
+  <!-- pink stars-->
+  {% for i in range(info[1]) %}
+  <span class="fa fa-star checked"></span>
+  {% endfor %}
+  <!-- black stars-->
+  {% for i in range( 5- info[1]) %}
+  <span class="fa fa-star"></span>
+  {% endfor %}
+  &nbsp;&nbsp;&nbsp;
+  {% endfor %}
+  <br>
+
+  <!-- Trainability -->
+  {% for info in dog_time_info[16:21] %}
+  <strong>{{info[0]}}</strong>
+  <!-- pink stars-->
+  {% for i in range(info[1]) %}
+  <span class="fa fa-star checked"></span>
+  {% endfor %}
+  <!-- black stars-->
+  {% for i in range( 5- info[1]) %}
+  <span class="fa fa-star"></span>
+  {% endfor %}
+  &nbsp;&nbsp;&nbsp;
+  {% endfor %}
+  <br>
+
+  <!-- Physical Needs-->
+  {% for info in dog_time_info[22:25] %}
+  <strong>{{info[0]}}</strong>
+  <!-- pink stars-->
+  {% for i in range(info[1]) %}
+  <span class="fa fa-star checked"></span>
+  {% endfor %}
+  <!-- black stars-->
+  {% for i in range( 5- info[1]) %}
+  <span class="fa fa-star"></span>
+  {% endfor %}
+  &nbsp;&nbsp;&nbsp;
+  {% endfor %}
+  <br>
+  <br>
+  {% endif %}
+  <!-- end showing the dog characteristics  -->
+
+
+  <!-- How to make Slideshow -->
+  <!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+  <div class="three_slides">
+    <h2 id = "threedogs_title" style="text-align:center"> Top Three Dog Breed Predictions</h2>
+    <table class = "mytable">
+      <thead>
+        <tr>
+          <th>1. {{ most_likely_breeds_list[0] }} with probability: {{most_likely_probability_list[0]}}%</th>
+          <th>2. {{ most_likely_breeds_list[1] }} with probability: {{most_likely_probability_list[1]}}%</th>
+          <th>3. {{ most_likely_breeds_list[2] }} with probability: {{most_likely_probability_list[2]}}%</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>
+            <div class="slideshow-container">
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][0] }}'  width="400" height="400"> </div>
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][1] }}'  width="400" height="400"> </div>
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][2] }}'  width="400" height="400"> </div>
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][3] }}'  width="400" height="400"> </div>
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][4] }}'  width="400" height="400"> </div>
+              <div class="mySlides1"> <img src='{{ pic_path_list[0][5] }}'  width="400" height="400"> </div>
+              <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+            </div>
+          </td>
+
+          <td>
+            <div class="slideshow-container">
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][0] }}'  width="400" height="400"> </div>
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][1] }}'  width="400" height="400"> </div>
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][2] }}'  width="400" height="400"> </div>
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][3] }}'  width="400" height="400"> </div>
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][4] }}'  width="400" height="400"> </div>
+              <div class="mySlides2"> <img src='{{ pic_path_list[1][5] }}'  width="400" height="400"> </div>
+              <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+            </div>
+          </td>
+
+          <td>
+            <div class="slideshow-container">
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][0] }}'  width="400" height="400"> </div>
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][1] }}'  width="400" height="400"> </div>
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][2] }}'  width="400" height="400"> </div>
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][3] }}'  width="400" height="400"> </div>
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][4] }}'  width="400" height="400"> </div>
+              <div class="mySlides3"> <img src='{{ pic_path_list[2][5] }}'  width="400" height="400"> </div>
+              <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+
+    <script>
+      var slideIndex = [];
+      var slideId = ["mySlides1", "mySlides2", "mySlides3"]
+      showSlides(1, 0);
+      showSlides(1, 1);
+      showSlides(1, 2);
+      
+      function plusSlides(n, no) {
+        showSlides(slideIndex[no] += n, no);
+      }
+      
+      function showSlides(n, no) {
+        var i;
+        var x = document.getElementsByClassName(slideId[no]);
+        if (typeof slideIndex[no] === 'undefined') {slideIndex[no] = 1;}
+        if (n > x.length) {slideIndex[no] = 1}    
+        if (n < 1) {slideIndex[no] = x.length}
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        x[slideIndex[no]-1].style.display = "block";  
+      }
+    </script>
+
+  </div>
+  <!-- end How to make Slideshow -->
+</div> 
+<!-- end hiding results-->
 {% endblock %}
+
+
+
+  <!-- <div class="dogtimeplot">
+    {% if in_df %}
+    <h1>{{which_breed}}</h1>
+    <b>The following data are scraped from <a href ='https://www.dogtime.com'> <b>DogTime</b></a> </b>
+    <br>
+    <br>
+    <img src='{{dogurl}}' alt="Image of {{select}}" width="300" height="300">
+    <div id='chart' class='chart'”>
+  
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script type='text/javascript'>
+      var graphs = {{graphJSON | safe}};
+      Plotly.plot('chart',graphs,{});
+    </script>
+    </div>
+    {% endif %}
+   </div> -->
