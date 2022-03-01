@@ -7,7 +7,7 @@ import numpy as np
 import tensorflow as tf
 
 
-#import face_detect
+import face_detect
 import dog_recommendation
 import dog_classes
 import dogtime_barcharts
@@ -33,7 +33,6 @@ classname = dog_classes.CLASS_NAME
 cat_dog_model = tf.keras.models.load_model('static/models/blog_post_model4_logit2.h5')
 # used transfer learning Xception
 model2 = tf.keras.models.load_model('static/models/dogmodel2.h5')
-
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -124,10 +123,10 @@ def top_three_images(most_likely_breeds_list):
     second_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[1]
     third_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[2]
 
-    # randome pick 6 for each Replace = True
-    first_img_path_list  = np.random.choice([os.path.join(first_pic_path, x) for x in os.listdir(first_pic_path)], size=6, replace=True)
-    second_pic_path_list = np.random.choice([os.path.join(second_pic_path, x) for x in os.listdir(second_pic_path)], size=6, replace=True)
-    third_pic_path_list  = np.random.choice([os.path.join(third_pic_path, x) for x in os.listdir(third_pic_path)], size=6, replace=True)
+    # randome pick 2
+    first_img_path_list  = np.random.choice([os.path.join(first_pic_path, x) for x in os.listdir(first_pic_path)], size=2, replace=False)
+    second_pic_path_list = np.random.choice([os.path.join(second_pic_path, x) for x in os.listdir(second_pic_path)], size=2, replace=False)
+    third_pic_path_list  = np.random.choice([os.path.join(third_pic_path, x) for x in os.listdir(third_pic_path)], size=2, replace=False)
     
     pic_path_list=[first_img_path_list, second_pic_path_list, third_pic_path_list]
     most_likely_breeds_list = [(x.split('-',1)[1]).replace('_',' ').title() for x in most_likely_breeds_list]
@@ -156,9 +155,9 @@ def about():
 @app.route('/display/<filename>')
 def display_image(filename):
     # face detect
-   # num = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
-    #if (num):
-   #     return redirect(url_for('static', filename='faces/' + filename), code=301)
+    num = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
+    if (num):
+       return redirect(url_for('static', filename='faces/' + filename), code=301)
     return redirect(url_for('static', filename='uploads/' + filename), code=302)
 
 
@@ -179,7 +178,7 @@ def upload_image():
         # flash('The image has been uploaded successfully!')
 
         any_face=0
-        #any_face = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
+        any_face = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
 
         uploaded_image_path = (os.path.join(UPLOAD_FOLDER, file.filename))
         catordog, catordog_confidence = cat_or_dog(uploaded_image_path)
@@ -235,6 +234,7 @@ def drag_upload():
         global DRAG_UPLOAD_NAME
 
         uploaded_image_path =os.path.join(app.config['UPLOADED_PATH'], DRAG_UPLOAD_NAME)
+        any_face = 0
         any_face = face_detect.faceDetector(DRAG_UPLOAD_NAME, UPLOAD_FOLDER, DEST_FOLDER)
 
         catordog, catordog_confidence = cat_or_dog(uploaded_image_path)
