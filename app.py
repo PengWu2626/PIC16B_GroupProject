@@ -281,7 +281,7 @@ def get_gallery():
         user_clicked_image_path = (os.path.join(UPLOAD_FOLDER, user_clicked_image_name))
 
         any_face = 0
-        #any_face = face_detect.faceDetector(user_clicked_image_name, UPLOAD_FOLDER, DEST_FOLDER)
+        any_face = face_detect.faceDetector(user_clicked_image_name, UPLOAD_FOLDER, DEST_FOLDER)
 
         catordog, catordog_confidence = cat_or_dog(user_clicked_image_path)
 
