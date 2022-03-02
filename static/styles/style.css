@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&display=swap');
+
 html {
   font-family: sans-serif;
   background: rgb(240, 202, 186);
@@ -9,8 +11,9 @@ body {
   background:lightblue;
 }
 
+
 h3 {
-  color: rgb(250, 250, 250);
+  color: #ffffff;
   font-family: sans-serif;
   margin: 1rem 0;
   text-align: center;
@@ -96,6 +99,27 @@ div.doc {
   background-color: rgb(224, 211, 193);
 
 }
+
+.intro_head h2{
+  font-family: "Fredoka";
+  font-weight: 700;
+  font-size: 4em;
+  color: #ffffff;
+}
+
+.intro h4{
+  font-family: "Fredoka";
+  font-weight: 500;
+  font-size: 2em;
+  color:rgb(45, 116, 175)
+}
+
+.intro p{
+  font-family: "Fredoka";
+  font-weight: 400;
+  color: #383631;
+}
+
 
 .why1 img{
   border-radius: 50%;
