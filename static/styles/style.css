@@ -1,16 +1,16 @@
 html {
   font-family: sans-serif;
-  background: rgb(224, 211, 193);
+  background: rgb(240, 202, 186);
 }
 
 body {
   text-align: center;
   margin: 0 auto;
-  background: rgb(224, 211, 193);
+  background:lightblue;
 }
 
 h3 {
-  color: rgb(41, 106, 202);
+  color: rgb(250, 250, 250);
   font-family: sans-serif;
   margin: 1rem 0;
   text-align: center;
