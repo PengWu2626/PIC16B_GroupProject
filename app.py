@@ -123,10 +123,10 @@ def top_three_images(most_likely_breeds_list):
     second_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[1]
     third_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[2]
 
-    # randome pick 2
-    first_img_path_list  = np.random.choice([os.path.join(first_pic_path, x) for x in os.listdir(first_pic_path)], size=2, replace=False)
-    second_pic_path_list = np.random.choice([os.path.join(second_pic_path, x) for x in os.listdir(second_pic_path)], size=2, replace=False)
-    third_pic_path_list  = np.random.choice([os.path.join(third_pic_path, x) for x in os.listdir(third_pic_path)], size=2, replace=False)
+    # randome pick 4
+    first_img_path_list  = np.random.choice([os.path.join(first_pic_path, x) for x in os.listdir(first_pic_path)], size=4, replace=False)
+    second_pic_path_list = np.random.choice([os.path.join(second_pic_path, x) for x in os.listdir(second_pic_path)], size=4, replace=False)
+    third_pic_path_list  = np.random.choice([os.path.join(third_pic_path, x) for x in os.listdir(third_pic_path)], size=4, replace=False)
     
     pic_path_list=[first_img_path_list, second_pic_path_list, third_pic_path_list]
     most_likely_breeds_list = [(x.split('-',1)[1]).replace('_',' ').title() for x in most_likely_breeds_list]
