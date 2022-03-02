@@ -142,6 +142,7 @@ def intro():
 
 @app.route('/')
 def index():
+    print(os. getcwd())
     return render_template('index.html')
 
 @app.route('/view/')

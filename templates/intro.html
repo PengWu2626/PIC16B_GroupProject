@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h3>{% block title %}Introduction{% endblock %}</h3>
+  
 {% endblock %}
 
 {% block content %}
 
+<div class="vedioOnBack">
+  <h1> Welcome to Dog Dictionary</h1>
+  <div class="video">
+    <video autoplay loop muted>
+      <source src="/static/Dogs_run.mp4" type="video/mp4">
+    </video>
+  </div>
+  
+</div>
+  
 {% endblock %}
+
