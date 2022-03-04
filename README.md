@@ -16,7 +16,7 @@ First, watch this [Youtube video](https://www.youtube.com/watch?v=Qu1QitU6GXA)  
 This video is based on the instruction from the [apple developer](https://developer.apple.com/metal/tensorflow-plugin/)
 
 The video created the environment named `tfm1`
-After all instructions, then `conda activate tfm1`.
+After all instructions, open your terminal, then run the command `conda activate tfm1`.
 Inside that environment, 
 we need to install these packages:
 
@@ -40,7 +40,7 @@ You can use  Visual Studio Code to open the folder for this whole project.
 
 After you open this project folder, find `app.py` file; there is a terminal inside the Visual Studio Code,
 
-type `conda activate tfm1` ( we used the example name from the video),
+run `conda activate tfm1` ( we used the example name from the video),
 
-then type `export FLASK_ENV=development; flask run`
+then run `export FLASK_ENV=development; flask run`
 
