@@ -6,16 +6,10 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 
-
 from src import face_detect
 from src import dog_recommendation
 from src import dog_classes
 from src import dogtime_barcharts
-
-
-# import plotly
-# import plotly.express as px
-# import json
 
 app = Flask(__name__)
 dropzone = Dropzone(app)
@@ -118,20 +112,52 @@ def cat_or_dog(img_path):
     return y_label, y_confidence
 
 
+
+def get_sample_images_link(dogname, num=6, df= pd.read_csv('static/dog_sample_images_path.csv')):
+  """
+  This function will return number of num images link from giving dog name.
+
+  Parameters
+  ----------
+  dogname: string; a dog breed 
+  num: int; number of images link
+  df: dataframe; dog_sample_images_path.csv (default)
+                        
+  Return 
+  ----------
+  images_list: list; list contain 'num' of 'dogname' images link.
+  """
+  try:
+    images_list = df[df['name']==dogname]['path'].sample(n=num).tolist()
+  except:
+    images_list = df[df['name']==dogname]['path'].sample(n=num, replace = True).tolist()
+  return images_list
+
+
+
 def top_three_images(most_likely_breeds_list):
-    first_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[0]
-    second_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[1]
-    third_pic_path = 'static/dogImages'+'/' + most_likely_breeds_list[2]
-
-    # randome pick 4
-    first_img_path_list  = np.random.choice([os.path.join(first_pic_path, x) for x in os.listdir(first_pic_path)], size=4, replace=False)
-    second_pic_path_list = np.random.choice([os.path.join(second_pic_path, x) for x in os.listdir(second_pic_path)], size=4, replace=False)
-    third_pic_path_list  = np.random.choice([os.path.join(third_pic_path, x) for x in os.listdir(third_pic_path)], size=4, replace=False)
+    """
+    This function will get dog image links from the Stanford dog dataset
+    and capitalize the first letter in all dog names.
     
-    pic_path_list=[first_img_path_list, second_pic_path_list, third_pic_path_list]
-    most_likely_breeds_list = [(x.split('-',1)[1]).replace('_',' ').title() for x in most_likely_breeds_list]
+    Parameters
+    ----------
+    most_likely_breeds_list: list of string; list contains dog names
+                            
+    Return 
+    ----------
+    title_most_likely_breeds_list: list; a string where the first character in every word is upper case
+    image_links_list: list of lists; each list contains the same dog breed image links
+    """
 
-    return most_likely_breeds_list, pic_path_list
+    # remove the label number (ex:'n02108915-french_bulldog' to 'french_bulldog')
+    # get the list of list dog images for each dog in the 'most_likely_breeds_list'
+    image_links_list = [get_sample_images_link(i.split('-',1)[1]) for i in most_likely_breeds_list]
+
+    # capitalize first letter in each words
+    title_most_likely_breeds_list = [(x.split('-',1)[1]).replace('_',' ').title() for x in most_likely_breeds_list]
+
+    return title_most_likely_breeds_list, image_links_list
 
 
 
