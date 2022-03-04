@@ -54,17 +54,30 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def dog_breed_prediction (path):
+    """
+    This function will get an image path and predict the top 3 most likely dog breed
+    from 120 dog breeds in the Stanford dog dataset
+    
+    Parameters
+    ----------
+    path: string; a dog image path
+
+    Return 
+    ----------
+    most_likely_list: list of strings; top 3 most likely dog breed name
+    most_likely_probability_list: list of floats; probability for each 3 dog breed
+    """
     # dimensions of our images
     IMG_HEIGHT = 299
     IMG_WIDTH = 299
 
-    # predicting images
+    # Image pre-processing
     img = tf.keras.preprocessing.image.load_img(path, target_size=(IMG_HEIGHT, IMG_WIDTH))
-    x = tf.keras.preprocessing.image.img_to_array(img)
-    x = np.expand_dims(img, axis=0)/255.
+    img = tf.keras.preprocessing.image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)/255.
 
     # Get predicted probabilities for 120 class labels
-    pred_classes = model2.predict(x, batch_size=32)
+    pred_classes = model2.predict(img, batch_size=32)
     # Display image being classified
     get = np.argsort(pred_classes)
     get=get[0]
@@ -85,17 +98,29 @@ def dog_breed_prediction (path):
 
 
 def cat_or_dog(img_path):
+    """
+    This function will get an image path and predict a cat or dog.
 
+    Parameters
+    ----------
+    img_path: string; a dog image
+
+    Return 
+    ----------
+    y_label: string; predicted result
+    y_confidence: confidence score
+    """
     IMG_HEIGHT = 160
     IMG_WIDTH = 160
 
+    # Image pre-processing
     # https://www.tensorflow.org/tutorials/images/transfer_learning
     img = tf.keras.utils.load_img(img_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
     img = tf.keras.utils.img_to_array(img)
     img = tf.expand_dims(img, 0) # Create a batch
 
-    predictions = cat_dog_model.predict_on_batch(img).flatten() #logit
-    probability_cat_dog = tf.nn.softmax(predictions)            # probability
+    predictions = cat_dog_model.predict_on_batch(img).flatten()  # logit
+    probability_cat_dog = tf.nn.softmax(predictions)             # probability
 
     class_names=['cat', 'dog']
 
@@ -143,17 +168,32 @@ def top_three_images(most_likely_breeds_list):
     title_most_likely_breeds_list: list; a string where the first character in every word is upper case
     image_links_list: list of lists; each list contains the same dog breed image links
     """
-
     # remove the label number (ex:'n02108915-french_bulldog' to 'french_bulldog')
     # get the list of list dog images for each dog in the 'most_likely_breeds_list'
     image_links_list = [get_sample_images_link(i.split('-',1)[1]) for i in most_likely_breeds_list]
-
     # capitalize first letter in each words
     title_most_likely_breeds_list = [(x.split('-',1)[1]).replace('_',' ').title() for x in most_likely_breeds_list]
 
     return title_most_likely_breeds_list, image_links_list
 
 
+
+def get_a_dog_image_from_dogtime(name):
+    """
+    This function will get a dog breed and return an associated image link from the DogTime.
+    
+    Parameters
+    ----------
+    name: string; a dog breed
+                            
+    Return 
+    ----------
+    dogtime_image_link: string; an image of the input dog breed from DogTime.
+    """
+    dogtime_df = pd.read_csv('static/dogtime.csv')
+    df = dogtime_df[dogtime_df['breed']==name]
+    dogtime_image_link = df['image_src'].unique()[0]
+    return dogtime_image_link
 
 
 @app.route('/intro')
@@ -312,17 +352,13 @@ def get_gallery():
             df = dogtime_df[dogtime_df['breed']== most_likely_breeds_list[0]]
             characteristic_stars_info =list(zip(list(df['characteristic']), list(df['star'])))
 
-            return render_template('view.html', filename=user_clicked_image_name, catordog=catordog,catordog_confidence=catordog_confidence,
-             which_breed=most_likely_breeds_list[0], in_df = True, any_face=any_face,
-            pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list,
-            dog_time_info=characteristic_stars_info)
+            return render_template('view.html', filename=user_clicked_image_name, catordog=catordog, catordog_confidence=catordog_confidence, which_breed=most_likely_breeds_list[0],
+                                    in_df = True, any_face=any_face, pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list,
+                                    dog_time_info=characteristic_stars_info)
 
-        return render_template('view.html', filename=user_clicked_image_name, catordog=catordog, catordog_confidence=catordog_confidence,
-         which_breed=most_likely_breeds_list, in_df = False, any_face=any_face,
-         pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list)
+        return render_template('view.html', filename=user_clicked_image_name, catordog=catordog, catordog_confidence=catordog_confidence, which_breed=most_likely_breeds_list,
+                                in_df = False, any_face=any_face, pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list)
    
-
-
 
 @app.route('/doginfo/', methods=['GET', 'POST'])
 def doginfo():
@@ -333,19 +369,10 @@ def doginfo():
     if request.method == 'GET':
         return render_template('doginformation.html', dog_breed_all=dog_breed_all)
     else:
-        select = request.form['dogs']
-        print(select)
-        which_dog = select
-
+        which_dog = request.form['dogs']
         graphJSON, dogpic = dogtime_barcharts.dogtime_plot(which_dog = which_dog)
 
-        return render_template('doginformation.html', graphJSON=graphJSON, dog_breed_all=dog_breed_all, select=select, dogurl = dogpic)
-
-def get_a_dog_image(name):
-    results = pd.read_csv('static/dogtime.csv')
-    df = results[results['breed']==name]
-    dogpic = df['image_src'].unique()[0]
-    return dogpic
+        return render_template('doginformation.html', graphJSON=graphJSON, dog_breed_all=dog_breed_all, select=which_dog, dogurl = dogpic)
 
 
 @app.route('/findyourdog', methods=['GET', 'POST'])
@@ -353,21 +380,27 @@ def findyourdog():
     if request.method == 'GET':
         return render_template('findyourdog.html', dogmap= dog_recommendation.prepare_recommendation_df()[1])
     else:
-        # get user selected characteristics
-        list_26 = request.form.getlist('characteristic_slider')
-        list_26= np.asarray(list_26)
-        characteristics = dog_recommendation.make_characteristics_map(list_26)
+        # get user-selected characteristics, check 'dog_recommendation.py' in 'src' folder for detailed information;
+        # 'selected_26_characteristics' list contains 26 elements;
+        # each element has a user-selected characteristic number (0-5) 
+        # index 0 means characteristic 'a', which means 'Adapts Well To Apartment Living.'
+        selected_26_characteristics= np.asarray(request.form.getlist('characteristic_slider'))
+
+        # check function 'dog_recommendation()' in 'dog_recommendation.py' for detailed information
+        characteristics = dog_recommendation.make_characteristics_map(selected_26_characteristics)
+
+        # get list of matching dog for recommendation
         recommendation_list = dog_recommendation.find_dog_recommendation(**characteristics)
+
+        # 0: no matching recommended dog 
         find_any = bool(recommendation_list)
 
-        dog_picture_lick =[]
-        for i in recommendation_list:
-            dog_picture_lick.append(get_a_dog_image(i))
+        # list of the recommended dog image link from DogTime
+        dog_picture_links = [get_a_dog_image_from_dogtime(dog) for dog in recommendation_list]
 
-        dog_recommendations = zip(recommendation_list, dog_picture_lick)
+        dog_recommendations = zip(recommendation_list, dog_picture_links)
 
-        return render_template('findyourdog.html', dogmap=dog_recommendation.prepare_recommendation_df()[1],recommendation_list=recommendation_list,
-                 find_any=find_any, dog_recommendations=dog_recommendations)
+        return render_template('findyourdog.html', dogmap=dog_recommendation.prepare_recommendation_df()[1], recommendation_list=recommendation_list, find_any=find_any, dog_recommendations=dog_recommendations)
 
 
 
