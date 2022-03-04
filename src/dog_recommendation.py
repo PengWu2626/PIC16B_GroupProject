@@ -2,10 +2,10 @@ import pandas as pd
 import numpy as np
 import string
 
-def get_dog_map(dogdf):
+def get_dog_characteristics_map(dogdf):
   """
   This function will get the unstacked DogTime dataframe and return a 
-  dictionary of dog mapper.
+  dictionary of dog characteristics mapper.
 
   Parameters
   ----------
@@ -13,10 +13,10 @@ def get_dog_map(dogdf):
 
   Return 
   ----------
-  get_dog_map(dogdf): dict; dog mapper
+  get_dog_characteristics_map(dogdf): dict; dog characteristics mapper
 
   ----------
-  dog_map info
+  dog_characteristics_map info (total 26)
  {'a': 'breed',
   'b': 'Adapts Well To Apartment Living',
   'c': 'Affectionate With Family',
@@ -59,7 +59,7 @@ def prepare_recommendation_df(dogdf = pd.read_csv('static/dogtime.csv')):
   Return 
   ----------
   dogdf: panda dataframe; unstacked input dataframe
-  get_dog_map(dogdf): dict; dog mapper from function get_dog_map()
+  get_dog_characteristics_map(dogdf): dict; dog mapper from function get_dog_characteristics_map()
   """
   dogdf = dogdf[['breed','characteristic','star']]
   dogdf = dogdf.set_index(keys=['breed','characteristic'])
@@ -78,7 +78,7 @@ def prepare_recommendation_df(dogdf = pd.read_csv('static/dogtime.csv')):
   # change values in 26 characteristic columns to integer
   dogdf[dogdf.columns[1:]] = dogdf[dogdf.columns[1:]].astype(int)
 
-  return dogdf, get_dog_map(dogdf)
+  return dogdf, get_dog_characteristics_map(dogdf)
 
 
 def make_characteristics_map(slider_val_array):
@@ -99,7 +99,7 @@ def make_characteristics_map(slider_val_array):
   """
   # list of 26 lower letters
   letters_26= list(string.ascii_lowercase)
-  # is 0 change to ">=0", else " == #"
+  # if it is 0 , then change to ">=0", else " == #"
   slider_val_list_with_operation = list(np.where(slider_val_array =="0", ">=0", np.char.add("==", slider_val_array)))
   # make kwargs map for function dog_recommendation
   characteristics = dict(zip(letters_26, slider_val_list_with_operation))
@@ -108,7 +108,7 @@ def make_characteristics_map(slider_val_array):
 
 def find_dog_recommendation(**characteristics):
   """
-  This function will return a list of matching dog recommendations
+  This function will return a list of matching dog for recommendation;
   based on the user-selected value of 26 dog characteristics.
   The characteristics information are scraped from DogTime.
 
