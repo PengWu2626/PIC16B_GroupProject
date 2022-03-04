@@ -90,9 +90,7 @@ def cat_or_dog(img_path):
     IMG_WIDTH = 160
 
     # https://www.tensorflow.org/tutorials/images/transfer_learning
-    img = tf.keras.utils.load_img(
-        img_path, target_size=(IMG_HEIGHT, IMG_WIDTH)
-    )
+    img = tf.keras.utils.load_img(img_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
     img = tf.keras.utils.img_to_array(img)
     img = tf.expand_dims(img, 0) # Create a batch
 
@@ -101,10 +99,6 @@ def cat_or_dog(img_path):
 
     class_names=['cat', 'dog']
 
-    print(
-    "This image most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(probability_cat_dog)], 100 * np.max(probability_cat_dog)))
-    
     # predicting class name
     y_label = class_names[np.argmax(probability_cat_dog)]
     y_confidence = (100 * np.max(probability_cat_dog)).round(3)
@@ -204,7 +198,7 @@ def upload_image():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         # flash('The image has been uploaded successfully!')
 
-        any_face=0
+        # get number of face
         any_face = face_detect.faceDetector(filename, UPLOAD_FOLDER, DEST_FOLDER)
 
         uploaded_image_path = (os.path.join(UPLOAD_FOLDER, file.filename))
@@ -213,23 +207,19 @@ def upload_image():
         most_likely_breeds_list, most_likely_probability_list = dog_breed_prediction(uploaded_image_path)
         most_likely_breeds_list, pic_path_list = top_three_images(most_likely_breeds_list=most_likely_breeds_list)
 
-        results = pd.read_csv('static/dogtime.csv')
-        dog_breed_all = results['breed'].unique()
+        dogtime_df = pd.read_csv('static/dogtime.csv')
+        dog_breed_all = dogtime_df['breed'].unique()
 
+        # check if the top predicted dog breed in DogTime
         if (most_likely_breeds_list[0] in dog_breed_all):
-            dog_breed_all = np.sort(dog_breed_all)
-
-            graphJSON, dogpic = dogtime_barcharts.dogtime_plot(which_dog = most_likely_breeds_list[0])
-
-            df = results[results['breed']== most_likely_breeds_list[0]]
-            dog_characteristic_list= list(df['characteristic'])
-            dog_stars_list = list(df['star'])
-            dog_time_info =list(zip(dog_characteristic_list,dog_stars_list))
+            # filer only with dog name = most_likely_breeds_list[0]
+            df = dogtime_df[dogtime_df['breed']== most_likely_breeds_list[0]]
+            characteristic_stars_info =list(zip(list(df['characteristic']), list(df['star'])))
 
             return render_template('view.html', filename=filename, catordog=catordog,catordog_confidence=catordog_confidence,
-             which_breed=most_likely_breeds_list[0], graphJSON=graphJSON,dogurl = dogpic,in_df = True, any_face=any_face,
+             which_breed=most_likely_breeds_list[0],in_df = True, any_face=any_face,
             pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list,
-            dog_time_info=dog_time_info)
+            dog_time_info=characteristic_stars_info)
 
         return render_template('view.html', filename=filename, catordog=catordog, catordog_confidence=catordog_confidence,
          which_breed=most_likely_breeds_list, in_df = False, any_face=any_face,
@@ -252,6 +242,7 @@ def drag_save():
             f.save(os.path.join(app.config['UPLOADED_PATH'], f.filename))
     return DRAG_UPLOAD_NAME
 
+
 # the second way to upload an image, so there are many repeated codes
 @app.route('/dragupload', methods=['GET','POST'])
 def drag_upload():
@@ -270,21 +261,19 @@ def drag_upload():
         most_likely_breeds_list, pic_path_list = top_three_images(most_likely_breeds_list=most_likely_breeds_list)
         
 
-        results = pd.read_csv('static/dogtime.csv')
-        dog_breed_all = results['breed'].unique()
-        if (most_likely_breeds_list[0] in dog_breed_all):
-            dog_breed_all = np.sort(dog_breed_all)
-            graphJSON, dogpic = dogtime_barcharts.dogtime_plot(which_dog = most_likely_breeds_list[0])
+        dogtime_df = pd.read_csv('static/dogtime.csv')
+        dog_breed_all = dogtime_df['breed'].unique()
 
-            df = results[results['breed']== most_likely_breeds_list[0]]
-            dog_characteristic_list= list(df['characteristic'])
-            dog_stars_list = list(df['star'])
-            dog_time_info =list(zip(dog_characteristic_list,dog_stars_list))
+        # check if the top predicted dog breed in DogTime
+        if (most_likely_breeds_list[0] in dog_breed_all):
+            # filer only with dog name = most_likely_breeds_list[0]
+            df = dogtime_df[dogtime_df['breed']== most_likely_breeds_list[0]]
+            characteristic_stars_info =list(zip(list(df['characteristic']), list(df['star'])))
 
             return render_template('view.html', filename=DRAG_UPLOAD_NAME, catordog=catordog,catordog_confidence=catordog_confidence,
-                which_breed=most_likely_breeds_list[0], graphJSON=graphJSON,dogurl = dogpic,in_df = True, any_face=any_face,
+                which_breed=most_likely_breeds_list[0],in_df = True, any_face=any_face,
             pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list,
-            dog_time_info=dog_time_info)
+            dog_time_info=characteristic_stars_info)
 
         return render_template('view.html', filename=DRAG_UPLOAD_NAME, catordog=catordog, catordog_confidence=catordog_confidence,
             which_breed=most_likely_breeds_list, in_df = False, any_face=any_face,
@@ -307,7 +296,6 @@ def get_gallery():
         user_clicked_image_name =request.form.get('submitbutton')
         user_clicked_image_path = (os.path.join(UPLOAD_FOLDER, user_clicked_image_name))
 
-        any_face = 0
         any_face = face_detect.faceDetector(user_clicked_image_name, UPLOAD_FOLDER, DEST_FOLDER)
 
         catordog, catordog_confidence = cat_or_dog(user_clicked_image_path)
@@ -316,22 +304,18 @@ def get_gallery():
 
         most_likely_breeds_list, pic_path_list = top_three_images(most_likely_breeds_list=most_likely_breeds_list)
         
-        results = pd.read_csv('static/dogtime.csv')
-        dog_breed_all = results['breed'].unique()
-        if (most_likely_breeds_list[0] in dog_breed_all):
-            dog_breed_all = np.sort(dog_breed_all)
+        dogtime_df = pd.read_csv('static/dogtime.csv')
+        dog_breed_all = dogtime_df['breed'].unique()
 
-            graphJSON, dogpic = dogtime_barcharts.dogtime_plot(which_dog = most_likely_breeds_list[0])
-            
-            df = results[results['breed']== most_likely_breeds_list[0]]
-            dog_characteristic_list= list(df['characteristic'])
-            dog_stars_list = list(df['star'])
-            dog_time_info =list(zip(dog_characteristic_list,dog_stars_list))
+        if (most_likely_breeds_list[0] in dog_breed_all):
+            # filer only with dog name = most_likely_breeds_list[0]
+            df = dogtime_df[dogtime_df['breed']== most_likely_breeds_list[0]]
+            characteristic_stars_info =list(zip(list(df['characteristic']), list(df['star'])))
 
             return render_template('view.html', filename=user_clicked_image_name, catordog=catordog,catordog_confidence=catordog_confidence,
-             which_breed=most_likely_breeds_list[0], graphJSON=graphJSON,dogurl = dogpic, in_df = True, any_face=any_face,
+             which_breed=most_likely_breeds_list[0], in_df = True, any_face=any_face,
             pic_path_list=pic_path_list, most_likely_breeds_list=most_likely_breeds_list, most_likely_probability_list=most_likely_probability_list,
-            dog_time_info=dog_time_info)
+            dog_time_info=characteristic_stars_info)
 
         return render_template('view.html', filename=user_clicked_image_name, catordog=catordog, catordog_confidence=catordog_confidence,
          which_breed=most_likely_breeds_list, in_df = False, any_face=any_face,
