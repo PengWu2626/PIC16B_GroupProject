@@ -32,7 +32,7 @@
 
 {% block content %}
 <form  action="{{ url_for('get_gallery')}}" method="post">
-{% for image_link in uploads_links %}
+{% for image_link in uploads_path %}
 <button type="submit" name="submitbutton" value = "{{image_link}}">
 <img src="{{ url_for('display_image', filename=image_link) }}" alt="{{image_link}}" height="300" width="300" >
 </button>
