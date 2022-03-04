@@ -19,3 +19,4 @@ Werkzeug==0.15.6
 Pillow==9.0.1
 plotly==5.6.0
 opencv-python==4.5.5.62
+imutils==0.5.4
