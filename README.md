@@ -8,7 +8,7 @@
 - Jiamu Liu
 
 
-## Instructions for M1
+## Instructions for M1 Mac to Run This Project Locally
 
 For Apple Silicon Mac:
 Our web app includes the TensorFlow package. To use TensorFlow on M1 Mac, we need to use "tensorflow-metal PluggableDevice."
@@ -36,6 +36,11 @@ we need to install these packages:
 
 - `pip3 install imutils`
 
+You can use  Visual Studio Code to open the folder for this whole project.
 
+After you open this project folder, find `app.py` file; there is a terminal inside the Visual Studio Code,
 
+type `conda activate tfm1` ( we used the example name from the video),
+
+then type `export FLASK_ENV=development; flask run`
 
