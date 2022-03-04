@@ -7,10 +7,10 @@ import numpy as np
 import tensorflow as tf
 
 
-import face_detect
-import dog_recommendation
-import dog_classes
-import dogtime_barcharts
+from src import face_detect
+from src import dog_recommendation
+from src import dog_classes
+from src import dogtime_barcharts
 
 
 # import plotly
