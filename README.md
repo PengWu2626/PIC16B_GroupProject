@@ -8,6 +8,16 @@
 - Jiamu Liu
 
 
+## Short Version of This Project
+
+This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [testing project repository](https://github.com/PengWu2626/testing_project). The short version of this project moved face detecting and drop zone.
+
+Warning, the short version still has a large slug size (>450MB), and it's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer than 30 seconds to complete). Sometimes you can close and re-open it to solve the problem. 
+
+https://pic16b-dog.herokuapp.com
+
+
+
 ## Instructions for M1 Mac to Run This Project Locally
 
 For Apple Silicon Mac:
