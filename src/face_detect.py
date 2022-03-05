@@ -1,11 +1,11 @@
 import cv2
-#import imutils
+import imutils
 
 
 def faceDetector(file, upload_folder, dest_folder):
     face_cas = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     face_img = cv2.imread(upload_folder + file)
-    #face_img = imutils.resize(face_img, width=580)
+    face_img = imutils.resize(face_img, width=580)
 
     # grayscale img
     face_grey_scale = cv2.cvtColor(face_img, cv2.COLOR_BGR2GRAY)
