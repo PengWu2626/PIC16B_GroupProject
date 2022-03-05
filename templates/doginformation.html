@@ -26,15 +26,19 @@
 
 {% if select %}
  <body>
+  <br>
+  <br>
   <h1>You selected {{select}}</h1>
-  <img src='{{dogurl}}' alt="Image of {{select}}" width="300" height="300">
+  <img style ="border-radius: 50px;" src='{{dogurl}}' alt="Image of {{select}}" width="300" height="300">
+  <br>
+  <br>
   <div id='chart' class='chart'”></div>
-</body>
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
   var graphs = {{graphJSON | safe}};
   Plotly.plot('chart',graphs,{});
 </script>
+</body>
 {% endif %}
 
   
