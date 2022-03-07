@@ -3,6 +3,12 @@ import imutils
 
 
 def faceDetector(file, upload_folder, dest_folder):
+    """
+    Process the uploaded image and detect any faces if exist.
+
+    Return:
+    The number of faces detected.
+    """
     CASCADE_PATH = 'static/haarcascade_frontalface_default.xml'
     face_cas = cv2.CascadeClassifier(CASCADE_PATH)
     face_img = cv2.imread(upload_folder + file)
