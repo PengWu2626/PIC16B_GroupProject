@@ -337,11 +337,13 @@ def drag_upload():
 def get_gallery():
 
     uploads_path = [x for x in os.listdir('static/uploads')if (x.split('.')[-1]).lower() in ALLOWED_EXTENSIONS ]
+    index = (range(1,len(uploads_path)+1))
+    uploads_path = list(zip(index, uploads_path))
+
 
     if request.method == 'GET':
         return render_template('display_uploads.html', uploads_path = uploads_path )
     else:
-
         # extract the value of submit button from request
         user_clicked_image_name =request.form.get('submitbutton')
         user_clicked_image_path = (os.path.join(UPLOAD_FOLDER, user_clicked_image_name))
@@ -412,9 +414,10 @@ def findyourdog():
         return render_template('findyourdog.html', dogmap=dog_recommendation.prepare_recommendation_df()[1], recommendation_list=recommendation_list, find_any=find_any, dog_recommendations=dog_recommendations)
 
 
-
 if __name__ == "__main__":
     app.run()
 
 
+
 # export FLASK_ENV=development; flask run
+
