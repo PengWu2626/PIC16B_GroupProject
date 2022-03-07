@@ -1,4 +1,4 @@
-- Q1: The slug size is too large to deploy on Heroku (details below). Is there a better way to solve this issue? (We tried to put models on the web server: https://dogfr.nicholastec.com/data/ but we have no how idea how to ask the web app load remotely. )
+- Q1: The slug size is too large to deploy on Heroku (details below). Is there a better way to solve this issue? (We tried to put models on the web server: https://dogfr.nicholastec.com/data/ but we have no how idea how to ask the web app load remotely. We also consider to deploy it on AWS instead of Heroku if possible.)
 
 - Q2: Are there any suggestions for improvement? Like, improve web app responding latency? (We will add program installation instructions later and may add a user login system to hide each users' uploading history.)
 
