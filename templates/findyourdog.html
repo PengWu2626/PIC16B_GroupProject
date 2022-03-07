@@ -6,12 +6,12 @@
 <!-- Google Fonts -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
 
-<h3>{% block title %}Recommendtion{% endblock %}</h3>
+<h3>{% block title %}{% endblock %}</h3>
 </head>
 {% endblock %}
 
 {% block content %}
-<body>           
+<body>
 <div class="split left">  <!-- Left side of screen-->
     <h4 style ="font-family: Audiowide, sans-serif; font-size: 50x;">We suggest picking 2-4 of the characteristics</h4> 
     <p style ="font-family: Audiowide, sans-serif; font-size: 15px;">0 means >=0, any specific number # means == #</p>
@@ -43,15 +43,10 @@
         </script>
 
         <button type="submit"> Submit </button>
-        <br>
-        <br>
-        <br> 
-        <br>
-        <br>
-        <br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        
     </form>
   </div>
-<p>
 
 <div class="split right"> <!-- Right side of screen-->
     <h6 style ="font-family: Audiowide, sans-serif; font-size: 40px;">Matching Result</h6>
@@ -72,5 +67,7 @@
         {% endif %}
         <!-- end check if find ant dog recommendations-->
 </div>
+
 </body>
 {% endblock %}
+
