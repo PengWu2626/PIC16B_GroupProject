@@ -13,6 +13,17 @@
 - Jiamu Liu
 
 
+## Full Version of This Project
+
+The full version has `slug size (490 MB) exceeds the soft limit (300 MB)` which may `affect boot time`.
+It's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer than 30 seconds to complete).
+Sometimes you can close and re-open your browser to solve the problem.
+
+**Full Version Webapp Link**:
+https://pic16b-dog-facial-recognition.herokuapp.com/
+
+
+
 ## Short Version of This Project
 
 This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [testing project repository](https://github.com/PengWu2626/testing_project). The short version of this project removed face detecting and drop zone.
