@@ -17,9 +17,6 @@ class ImdbSpider(scrapy.Spider):
 
 # Sitemap: http://dogtime.com/sitemap.xml
 
-
-   
-
     # Dog Breeds
     start_urls = ['https://dogtime.com/dog-breeds/profiles/']
 
@@ -33,6 +30,8 @@ class ImdbSpider(scrapy.Spider):
 
     def parse(self, response):
         """
+        This function starting at the website 'https://dogtime.com/dog-breeds/profiles/'
+        , and get all dog breeds links.
         
         """
         for dog_link in response.css('div.list-item a::attr(href)').getall():
@@ -41,7 +40,7 @@ class ImdbSpider(scrapy.Spider):
 
     def parse_dog(self, response):
         """
-        
+        This function get each dog breed's chatacteristics.
         """
         valid_extensions = [".jpg"]
         ## get breed chatacteristics:
