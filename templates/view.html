@@ -3,50 +3,57 @@
 {% block header %}
 <head>
 <!-- Learned this from https://www.w3schools.com/ -->
-  <!-- Font Awesome Icon Library -->
+<!-- Font Awesome Icon Library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/viewstyle.css') }}">
-
-  <h3>{% block title %}View{% endblock %}</h3>
+<h2>{% block title %}View{% endblock %}</h2>
 </head>
 {% endblock %}
 
-{% block content %}
 
+{% block content %}
   {% if filename %}
+  <body>
+  <!-- Flip image with confidence score at back -->
+  <!-- I learned how to flip an image from "https://www.w3schools.com/howto/howto_css_flip_image.asp"-->
   <div class="flip-box">
     <div class="flip-box-inner">
       <div class="flip-box-front">
         <img src="{{ url_for('display_image', filename=filename) }}" alt="Uploaded image" style="width:300px;height:300px" >
       </div>
       <div class="flip-box-back">
-        <h2>Hi</h2>
+        <h3>Hi</h3>
         <p> It looks like a {{catordog}} with {{ catordog_confidence }}% confidence.</p>
       </div>
     </div>
   </div>
+   <!-- End Flip image with confidence score at back -->
   {% endif %}
 
-  <br>
-  <p id = "cat_dog"> Flip to show the confidence. <br> Thanks for the image!  It looks like a {{catordog}}.</p>
-  <br>
 
-  {% if catordog == 'cat' %}
-  <script>
-    function test() {
-      alert("It might be wrong that our algorithm predicted this image is CAT! But, if it is a cat, let's show any dog that looks like this cat.");
-    }
-    window.addEventListener('load', event => {
-      test();
-    });
-  </script>
-  {% endif %}
-
+  <!-- Squiggly Text -->
+  <!-- I find from "https://www.sliderrevolution.com/resources/css-text-animation/" by "Developer: Lucas Bebber" -->
+  <div class="squiggly_input_words" contenteditable>
+    <br>
+    <p id = "cat_dog"> Flip to show the confidence. <br> Thanks for the image!  It looks like a {{catordog}}.</p>
+    <br>
+  </div>
+  
 <!-- check any detected -->
 {% if any_face %}
-<p>FIND FACE!</p>
+
+<script>
+  function test() {
+    alert("Ummm... It looks like the picture included someone.");
+  }
+  window.addEventListener('load', event => {
+    test();
+  });
+</script>
+
+<p>Face detected!</p>
   <!-- detected face, create a button to ask user displaying prediction or not -->
-  <button onclick="askShowPrediction()">Continue to show the prediction (Double click first time)</button>
+  <button class="hiding_btn" onclick="askShowPrediction()">Continue to show the prediction (Double click first time)</button>
   <script>
     function askShowPrediction() {
       var x = document.getElementById("hiding_results");
@@ -95,13 +102,11 @@
   <!-- end change title -->
 
   <!-- Cat or Dog model predicted wrong; Something wrong let user change -->
-  <button class = 'change_btn' onclick='askChange()'>Something wrong you want to change?</button>
+    <div class="button change_btn" onclick='askChange()'>??? HUH ???</div>
 
     <script>
     function askChange() {
-      if (confirm("Ok to change?")) {
-
-        let original_title = document.getElementById("threedogs_title").value;
+      if (confirm("Find the first prediction is wrong? Click OK to change it, or directly change on the squiggly text.")) {
 
         if ('{{catordog}}' == 'cat') {
           document.getElementById("cat_dog").innerHTML = "Thanks for the correction! <br> I am Dog";
@@ -124,16 +129,13 @@
       }
     </script>
   <!-- end Cat or Dog model predicted wrong; Something wrong let user change -->
-
   <br>
   <br>
 
   <!-- if the predicted dog breed in dogtime, show the dog characteristics -->  
   {% if in_df %} 
-  <br>
-  <h1>{{which_breed}}</h1>
-  <b>The following <span class="fa fa-star checked"></span> information are scraped from <a href ='https://dogtime.com/dog-breeds/profiles'> <b>DogTime</b></a> </b>
-
+  <h1><p style="color: rgb(225, 235, 212);">{{which_breed}}</p></h1>
+  <b style="color: rgb(225, 235, 212);">The following <span class="fa fa-star checked"></span> information are scraped from <a href ='https://dogtime.com/dog-breeds/profiles'> <b>DogTime</b></a> </b>
   <br>
   <br>
 
@@ -141,14 +143,14 @@
   <!-- There is a better way to loop and show stars, if we have more time, we will improve it  -->
   <!-- Adaptability -->
   {% for info in dog_time_info[0:5] %}
-  <strong>{{info[0]}}</strong>
+  <p style="display:inline"><strong>{{info[0]}}</strong></p>
   <!-- pink stars-->
   {% for i in range(info[1]) %}
   <span class="fa fa-star checked"></span>
   {% endfor %}
   <!-- black stars-->
   {% for i in range( 5- info[1]) %}
-  <span class="fa fa-star"></span>
+  <span class="fa fa-star unchecked"></span>
   {% endfor %}
   &nbsp;&nbsp;&nbsp;
   {% endfor %}
@@ -156,14 +158,14 @@
 
   <!-- All Aroubd Friendliness-->
   {% for info in dog_time_info[6:9] %}
-  <strong>{{info[0]}}</strong>
+  <p style="display:inline"><strong>{{info[0]}}</strong></p>
   <!-- pink stars-->
   {% for i in range(info[1]) %}
   <span class="fa fa-star checked"></span>
   {% endfor %}
   <!-- black stars-->
   {% for i in range( 5- info[1]) %}
-  <span class="fa fa-star"></span>
+  <span class="fa fa-star unchecked"></span>
   {% endfor %}
   &nbsp;&nbsp;&nbsp;
   {% endfor %}
@@ -171,14 +173,14 @@
 
   <!-- Health And Grooming Needs-->
   {% for info in dog_time_info[10:15] %}
-  <strong>{{info[0]}}</strong>
+  <p style="display:inline"><strong>{{info[0]}}</strong></p>
   <!-- pink stars-->
   {% for i in range(info[1]) %}
   <span class="fa fa-star checked"></span>
   {% endfor %}
   <!-- black stars-->
   {% for i in range( 5- info[1]) %}
-  <span class="fa fa-star"></span>
+  <span class="fa fa-star unchecked"></span>
   {% endfor %}
   &nbsp;&nbsp;&nbsp;
   {% endfor %}
@@ -186,14 +188,14 @@
 
   <!-- Trainability -->
   {% for info in dog_time_info[16:21] %}
-  <strong>{{info[0]}}</strong>
+  <p style="display:inline"><strong>{{info[0]}}</strong></p>
   <!-- pink stars-->
   {% for i in range(info[1]) %}
   <span class="fa fa-star checked"></span>
   {% endfor %}
   <!-- black stars-->
   {% for i in range( 5- info[1]) %}
-  <span class="fa fa-star"></span>
+  <span class="fa fa-star unchecked"></span>
   {% endfor %}
   &nbsp;&nbsp;&nbsp;
   {% endfor %}
@@ -201,33 +203,33 @@
 
   <!-- Physical Needs-->
   {% for info in dog_time_info[22:25] %}
-  <strong>{{info[0]}}</strong>
+  <p style="display:inline"><strong>{{info[0]}}</strong></p>
   <!-- pink stars-->
   {% for i in range(info[1]) %}
   <span class="fa fa-star checked"></span>
   {% endfor %}
   <!-- black stars-->
   {% for i in range( 5- info[1]) %}
-  <span class="fa fa-star"></span>
+  <span class="fa fa-star unchecked"></span>
   {% endfor %}
   &nbsp;&nbsp;&nbsp;
   {% endfor %}
-  <br>
-  <br>
+  <br><br><br>
   {% endif %}
   <!-- end showing the dog characteristics  -->
 
-
   <!-- How to make Slideshow -->
   <!-- https://www.w3schools.com/howto/howto_js_slideshow.asp -->
-  <div class="three_slides">
-    <h2 id = "threedogs_title" style="text-align:center"> Top Three Dog Breed Predictions</h2>
-    <table class = "mytable">
+  <!-- I added slideshow insde table to be on the same row-->
+    
+    <h2 id = "threedogs_title" style="color: aliceblue;"> Top Three Dog Breed Predictions</h2>
+    <br>
+    <table class = "dogtable">
       <thead>
         <tr>
-          <th>1. {{ most_likely_breeds_list[0] }} with probability: {{most_likely_probability_list[0]}}%</th>
-          <th>2. {{ most_likely_breeds_list[1] }} with probability: {{most_likely_probability_list[1]}}%</th>
-          <th>3. {{ most_likely_breeds_list[2] }} with probability: {{most_likely_probability_list[2]}}%</th>
+          <th><p>1. {{ most_likely_breeds_list[0] }} with probability: {{most_likely_probability_list[0]}}%</p></th>
+          <th><p>2. {{ most_likely_breeds_list[1] }} with probability: {{most_likely_probability_list[1]}}%</p></th>
+          <th><p>3. {{ most_likely_breeds_list[2] }} with probability: {{most_likely_probability_list[2]}}%</p></th>
         </tr>
       </thead>
 
@@ -273,33 +275,68 @@
           </td>
         </tr>
       </tbody>
-
-    <script>
-      var slideIndex = [];
-      var slideId = ["mySlides1", "mySlides2", "mySlides3"]
-      showSlides(1, 0);
-      showSlides(1, 1);
-      showSlides(1, 2);
-      
-      function plusSlides(n, no) {
-        showSlides(slideIndex[no] += n, no);
+    </table>
+ 
+  <script>
+    var slideIndex = [];
+    var slideId = ["mySlides1", "mySlides2", "mySlides3"]
+    showSlides(1, 0);
+    showSlides(1, 1);
+    showSlides(1, 2);
+    
+    function plusSlides(n, no) {
+      showSlides(slideIndex[no] += n, no);
+    }
+    
+    function showSlides(n, no) {
+      var i;
+      var x = document.getElementsByClassName(slideId[no]);
+      if (typeof slideIndex[no] === 'undefined') {slideIndex[no] = 1;}
+      if (n > x.length) {slideIndex[no] = 1}    
+      if (n < 1) {slideIndex[no] = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
       }
-      
-      function showSlides(n, no) {
-        var i;
-        var x = document.getElementsByClassName(slideId[no]);
-        if (typeof slideIndex[no] === 'undefined') {slideIndex[no] = 1;}
-        if (n > x.length) {slideIndex[no] = 1}    
-        if (n < 1) {slideIndex[no] = x.length}
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
-        }
-        x[slideIndex[no]-1].style.display = "block";  
-      }
-    </script>
-
-  </div>
+      x[slideIndex[no]-1].style.display = "block";  
+    }
+  </script>
   <!-- end How to make Slideshow -->
 </div> 
 <!-- end hiding results-->
+<br>
+
+
+<!-- HTML SVG Graphics for Squiggly Text used above-->
+<!-- https://www.sliderrevolution.com/resources/css-text-animation/ -->
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+
+    <filter id="squiggly-0">
+      <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="0"/>
+      <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+    </filter>
+    <filter id="squiggly-1">
+      <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="3" result="noise" seed="1"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+    </filter>
+    
+    <filter id="squiggly-2">
+      <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="2"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+    </filter>
+    <filter id="squiggly-3">
+      <feTurbulence id="turbulence" baseFrequency="0.01" numOctaves="3" result="noise" seed="3"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+    </filter>
+    
+    <filter id="squiggly-4">
+      <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" result="noise" seed="4"/>
+<feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+    </filter>
+  </defs> 
+</svg>
+<!-- End Squiggly Text -->
+
+</body>
 {% endblock %}
+
