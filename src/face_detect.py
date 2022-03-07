@@ -3,7 +3,8 @@ import imutils
 
 
 def faceDetector(file, upload_folder, dest_folder):
-    face_cas = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+    CASCADE_PATH = 'static/haarcascade_frontalface_default.xml'
+    face_cas = cv2.CascadeClassifier(CASCADE_PATH)
     face_img = cv2.imread(upload_folder + file)
     face_img = imutils.resize(face_img, width=580)
 
