@@ -20,13 +20,15 @@ It's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer
 Sometimes you can close and re-open your browser to solve the problem.
 
 **Full Version Webapp Link**:
+
 https://pic16b-dog-facial-recognition.herokuapp.com/
 
 
 
 ## Short Version of This Project
 
-This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [testing project repository](https://github.com/PengWu2626/testing_project). The short version of this project removed face detecting and drop zone.
+This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [pic16b_group_project_short_version
+Public](https://github.com/PengWu2626/pic16b_group_project_short_version) repository. The short version of this project removed face detecting and drop zone.
 
 ```diff
 - Warning:
@@ -46,13 +48,10 @@ Some errors you might encounter while using this web app:
 - Error R15 (Memory quota vastly exceeded)
 
 ```
-```diff
-+ Webapp Link Below 
-```
 
-**Early Draft Version:**
+**Short Version:**
 
-https://pic16b-dog.herokuapp.com
+https://pic16b-dogfr-short.herokuapp.com
 
 
 ## Instructions for M1 Mac to Run This Project Locally
