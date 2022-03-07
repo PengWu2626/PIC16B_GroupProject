@@ -1,6 +1,8 @@
-- Q1:
-- Q2:
-- Q3:
+- Q1: The slug size is too large to deploy on Heroku (details below). Is there a better way to solve this issue? (We tried to put models on the web server: https://dogfr.nicholastec.com/data/ but we have no how idea how to ask the web app load remotely. )
+
+- Q2: Are there any suggestions for improvement? Like, improve web app responding latency? (We will add program installation instructions later and may add a user login system to hide each users' uploading history.)
+
+Thank you for your help!
 
 # PIC16B_GroupProject - Dog Facial Recognition
 
@@ -65,7 +67,7 @@ we need to install these packages:
 
 - `pip3 install opencv-python`
 
-- `pip3 install matplotilb`
+- `pip3 install matplotlib`
 
 - `pip3 install Flask-Dropzone`
 
