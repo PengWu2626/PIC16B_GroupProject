@@ -15,18 +15,33 @@
 
 ## Short Version of This Project
 
-This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [testing project repository](https://github.com/PengWu2626/testing_project). The short version of this project moved face detecting and drop zone.
+This project exceeds the Heroku slug size (500MB). Therefore, we created another short version of this project in the [testing project repository](https://github.com/PengWu2626/testing_project). The short version of this project removed face detecting and drop zone.
 
 ```diff
 - Warning:
-the short version still has slug size (437 MB) exceeds the soft limit (300 MB) which may affect boot time.
+```
+the short version still has `slug size (446 MB) exceeds the soft limit (300 MB)` which may `affect boot time`.
 It's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer than 30 seconds to complete).
-Sometimes you can close and re-open it to solve the problem.
+Sometimes you can close and re-open your browser to solve the problem.
+
+
+This Web app uses a `lot of memory`, and it might be `crashed` if you use pictures to predict too many times at once. I suggest trying two images of predicting, then closing your browser and re-open it.  
+
+Some errors you might encounter while using this web app:
+```diff
+- Error H10 (App crashed. A crashed web dyno or a boot timeout on the web dyno will present this error.)
+- Error H12 (Request timeout)
+- Error R14 (Memory quota exceeded)
+- Error R15 (Memory quota vastly exceeded)
+
+```
+```diff
++ Webapp Link Below 
 ```
 
-**Webapp Link:**
-https://pic16b-dog.herokuapp.com
+**Early Draft Version:**
 
+https://pic16b-dog.herokuapp.com
 
 
 ## Instructions for M1 Mac to Run This Project Locally
