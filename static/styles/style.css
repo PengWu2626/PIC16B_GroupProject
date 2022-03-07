@@ -27,8 +27,16 @@ h3 {
   text-align: center;
 }
 
+h4{
+  color: firebrick;
+}
+
 p{
-  color: #e4faf7;
+  color: white;
+}
+
+a{
+  color: orange;
 }
 
 form {
