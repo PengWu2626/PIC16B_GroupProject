@@ -1,42 +1,48 @@
 {% extends 'base.html' %}
 
-
 {% block header %}
 <head>
-    <style>
-    img:hover {
-      animation: shake 0.5s;
-      animation-iteration-count: infinite;
-    }
-    
-    @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); }
-      10% { transform: translate(-1px, -2px) rotate(-1deg); }
-      20% { transform: translate(-3px, 0px) rotate(1deg); }
-      30% { transform: translate(3px, 2px) rotate(0deg); }
-      40% { transform: translate(1px, -1px) rotate(1deg); }
-      50% { transform: translate(-1px, 2px) rotate(-1deg); }
-      60% { transform: translate(-3px, 1px) rotate(0deg); }
-      70% { transform: translate(3px, 1px) rotate(-1deg); }
-      80% { transform: translate(-1px, -1px) rotate(1deg); }
-      90% { transform: translate(1px, 2px) rotate(0deg); }
-      100% { transform: translate(1px, -2px) rotate(-1deg); }
-    }
-    </style>
-    
-    <h3>{% block title %}Uploaded Images{% endblock %}</h3>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/glassstyle.css') }}">
+  <h3>{% block title %}User Uploaded Images{% endblock %}</h3>
 </head>
-
 {% endblock %}
 
 
 {% block content %}
-<form  action="{{ url_for('get_gallery')}}" method="post">
-{% for image_link in uploads_path %}
-<button type="submit" name="submitbutton" value = "{{image_link}}">
-<img src="{{ url_for('display_image', filename=image_link) }}" alt="{{image_link}}" height="300" width="300" >
-</button>
-{% endfor %}
-</form>
+<body>
+
+  <form  action="{{ url_for('get_gallery')}}" method="post">
+    <div class="containerall">
+    {% for image_link in uploads_path %}
+    <!-- Glassmorphism -->
+    <!-- I find some cool Real Glassmorphism Card Hover Effects at Youtube -->
+    <!-- https://www.youtube.com/watch?v=hv0rNxr1XXk -->
+    <div class="container">
+      <div class="card">
+        <div class="content">
+          <h2>{{image_link[0]}}</h2>
+          <p>{{image_link[1]}}</p>
+          <button type="submit" name="submitbutton" value = "{{image_link[1]}}">
+          <img src="{{ url_for('display_image', filename=image_link[1]) }}" alt="{{image_link[1]}}" height="280" width="265" >
+        </div>
+      </div>
+      </div>
+    <!-- End Glassmorphism -->
+    {% endfor %}
+    </form>
+
+
+  <!-- for Glassmorphism --> <!-- https://micku7zu.github.io/vanilla-tilt.js/-->
+  <!-- at the end of the body -->
+  <script type="text/javascript" src="/static/vanilla-tilt.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+    max: 25,
+    speed: 400,
+    glare: true,
+    "max-glare": 1,
+    })
+  </script>
+</body>
 
 {% endblock %}
