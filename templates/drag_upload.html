@@ -10,6 +10,7 @@
   {{ dropzone.load_css() }}
   {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
 <body>
+  <div>
 
 <!--
 DropZone
@@ -26,10 +27,6 @@ https://github.com/greyli/flask-dropzone/tree/master/examples
   {{ dropzone.load_js() }}
   {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
      custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 1,') }}
-  
+</div> 
 </body>
-
-
-
-
 {% endblock %}
