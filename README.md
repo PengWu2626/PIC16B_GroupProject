@@ -74,7 +74,7 @@ we need to install these packages:
 
 - `pip3 install opencv-python`
 
-- `pip3 install matplotilb`
+- `pip3 install matplotlib`
 
 - `pip3 install Flask-Dropzone`
 
