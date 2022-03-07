@@ -26,7 +26,7 @@ classname = dog_classes.CLASS_NAME
 # cat_dog_model from homework blog post 5
 cat_dog_model = tf.keras.models.load_model('static/models/blog_post_model4_logit2.h5')
 # used transfer learning Xception
-model2 = tf.keras.models.load_model('static/models/dogmodel2.h5')
+model2 = tf.keras.models.load_model('static/models/model2.h5')
 
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
