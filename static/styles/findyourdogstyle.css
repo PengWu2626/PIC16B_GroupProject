@@ -1,3 +1,11 @@
+body{
+  position: fixed;
+  height: 100%;
+  text-align: center;
+  margin: 0;
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+}
+
 p {
   color: #ffffff;
 }
@@ -16,28 +24,49 @@ img {
 
 /* Split the screen in half */
 .split {
+position:fixed;
 height: 100%;
 width: 50%;
-position: fixed;
-z-index: 1;
 top: 0;
-overflow-x: hidden;
 padding-top: 20px;
+
 }
   
 .left {
   margin-top: 100px;
   left: 0;
+  overflow-y: scroll;
 }
   
 .right {
+  height: 100%;
   margin-top: 55px;
   right: 0;
+  overflow-y: scroll;
   }
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background:none;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-image: linear-gradient(180deg, pink 0%, lightblue 99%);
+  opacity: 20%;
+}
+
 
 .slidecontainer {
 width: 130%;
 }
+
 
 /* I got Penguin slider from here */
 /* <a class="twitter-link" href="https://twitter.com/phil_osophie" target="_blank" >by @phil_osophie</a> */

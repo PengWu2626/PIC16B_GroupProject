@@ -1,7 +1,7 @@
 <!doctype html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<html>
+<!-- External Javascript for Parallax Star background-->
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <!----css custom file link-->
 <link rel="stylesheet" href="style.css">
 <!---Fontawesome CDN link----->
@@ -24,6 +24,13 @@
 </nav>
 
 <!-- I combined two moving background which I dinf online -->
+<!-- SHOOTING STAR background by Alphardex --> <!-- https://freefrontend.com/css-animated-backgrounds/ -->
+<div class="movingstars">
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+  <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+</div>
+<!-- End SHOOTING STAR background-->
+
 <!-- Parallax Star background -->
 <!-- I find an example of using Parallax Star background, Created by Saransh Sinha-->
 <!-- https://www.sliderrevolution.com/resources/css-animated-background/-->
@@ -34,25 +41,14 @@
 <div id='title'></div>
 <!-- End Parallax Star background in CSS-->
 
-<!-- SHOOTING STAR background by Alphardex --> <!-- https://freefrontend.com/css-animated-backgrounds/ -->
-<div class="movingstars">
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-</div>
-<!-- End SHOOTING STAR background-->
 <!-- End combine two moving background -->
 
-<section class="content">
+
   <header>
     {% block header %}{% endblock %}
   </header>
+  <body>
   {% block content %}{% endblock %}
-</section>
+
+
+</html>

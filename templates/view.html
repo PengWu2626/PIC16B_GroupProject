@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<head>
+
 <!-- Learned this from https://www.w3schools.com/ -->
 <!-- Font Awesome Icon Library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/viewstyle.css') }}">
 <h2>{% block title %}View{% endblock %}</h2>
-</head>
+
 {% endblock %}
 
 
@@ -100,7 +100,8 @@
   });
   </script>
   <!-- end change title -->
-
+  <br><br>
+  
   <!-- Cat or Dog model predicted wrong; Something wrong let user change -->
     <div class="button change_btn" onclick='askChange()'>??? HUH ???</div>
 

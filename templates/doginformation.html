@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/glassstyle.css') }}">
   <h3>{% block title %}Dog Information{% endblock %}</h3>
   <b style="color:rgb(228, 228, 240);">The following data are scraped from <a href ='https://dogtime.com/dog-breeds/profiles'> <b>DogTime</b></a> </b>
+</head>
 {% endblock %}
 
 {% block content %}
 <body>
-
 <form  action="{{ url_for('doginfo')}}" method="post">
     
   <label for="pick"  style="color:rgb(228, 228, 240);">Choose Dog Breed:</label>
@@ -24,21 +26,42 @@
 </form>
 
 {% if select %}
-
+<br><br>
+      <!-- Glassmorphism -->
+    <!-- I find some cool Real Glassmorphism Card Hover Effects at Youtube -->
+    <!-- https://www.youtube.com/watch?v=hv0rNxr1XXk -->
+    <div class="container">
+      <div class="card">
+        <div class="content">
+          <h2 style="color:rgb(228, 228, 240); font-size: 20px; top: -50px;">{{select}}</h2>
+          <img src='{{dogurl}}' alt="Image of {{select}}" width="280" height="330">
+        </div>
+      </div>
+      </div>
+    <!-- End Glassmorphism -->
+    
   <br>
   <br>
-  <h2 style="color:rgb(228, 228, 240);">You selected {{select}}</h2>
-  <img style ="border-radius: 50px;" src='{{dogurl}}' alt="Image of {{select}}" width="300" height="300">
-  <br>
-  <br>
-  <div id='chart' class='chart'”></div>
+<div id='chart' class='chart' style="opacity: 80%; width: 80%; margin-left: auto;margin-right: auto; overflow: visible;">
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
   var graphs = {{graphJSON | safe}};
   Plotly.plot('chart',graphs,{});
 </script>
+</div>
 {% endif %}
 
-</body>  
-{% endblock %}
 
+<!-- for Glassmorphism --> <!-- https://micku7zu.github.io/vanilla-tilt.js/-->
+  <!-- at the end of the body -->
+  <script type="text/javascript" src="/static/vanilla-tilt.js"></script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+    max: 25,
+    speed: 400,
+    glare: true,
+    "max-glare": 1,
+    })
+  </script>
+  </body>  
+{% endblock %}

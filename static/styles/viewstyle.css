@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC:400,700");
 
+
 h2{
   color: white;
 }
@@ -15,10 +16,7 @@ p{
 #hiding_results {
   display: none;
   width: 100%;
-
   text-align: center;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-
 }
 
 img{
@@ -215,6 +213,8 @@ I find from "https://www.sliderrevolution.com/resources/css-text-animation/" by 
   margin-bottom: 30px;
   cursor: pointer;
   display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .change_btn {

@@ -1,23 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&display=swap');
 
-html {
-  font-family: sans-serif;
+html{
   height: 100%;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
 body {
+  height: 100%;
+  width: 100%;
   text-align: center;
-  margin: 0 auto;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: visible;
+  margin: 0;
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
 }
+
 
 #main_title{
   font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: 1.3em;
   color: #ffffff;
   position:relative; right: 26px; bottom:5px; 
+  
 }
 
 h3 {
@@ -189,23 +190,27 @@ div.doc {
 
 /* I find an example online of using SHOOTING STAR background by Alphardex */
 /*  https://freefrontend.com/css-animated-backgrounds/  */
+
 .movingstars {
-  position: relative;
+  overflow: hidden;
+  position: fixed;
   top: 0;
-  left: 0;
+  left:0;
   width: 100%;
   height: 120%;
   transform: rotate(-45deg);
+  z-index: -3;
 }
 
 .star {
-  --star-color: #dffaff;
+  opacity: 0;
+  --star-color: white;
   --star-tail-length: 6em;
   --star-tail-height: 2px;
   --star-width: calc(var(--star-tail-length) / 6);
   --fall-duration: 9s;
   --tail-fade-duration: var(--fall-duration);
-  position: relative;
+  position: absolute;
   top: var(--top-offset);
   left: 0;
   width: var(--star-tail-length);
@@ -216,71 +221,106 @@ div.doc {
   filter: drop-shadow(0 0 6px currentColor);
   transform: translate3d(104em, 0, 0);
   animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-
+}
+@media screen and (max-width: 750px) {
+  .star {
+    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
+  }
 }
 .star:nth-child(1) {
-  --star-tail-length: 5.67em;
-  --top-offset: 91.46vh;
-  --fall-duration: 7.662s;
-  --fall-delay: 8.73s;
+  --star-tail-length: 7.34em;
+  --top-offset: 82.56vh;
+  --fall-duration: 7.924s;
+  --fall-delay: 3.292s;
 }
 .star:nth-child(2) {
-  --star-tail-length: 5.8em;
-  --top-offset: 88.89vh;
-  --fall-duration: 8.121s;
-  --fall-delay: 8.795s;
+  --star-tail-length: 5.87em;
+  --top-offset: 37.94vh;
+  --fall-duration: 6.829s;
+  --fall-delay: 4.412s;
 }
 .star:nth-child(3) {
-  --star-tail-length: 5.98em;
-  --top-offset: 84.16vh;
-  --fall-duration: 8.236s;
-  --fall-delay: 6.307s;
+  --star-tail-length: 7.04em;
+  --top-offset: 16.56vh;
+  --fall-duration: 9.515s;
+  --fall-delay: 8.473s;
 }
 .star:nth-child(4) {
-  --star-tail-length: 6.73em;
-  --top-offset: 84.85vh;
-  --fall-duration: 7.85s;
-  --fall-delay: 8.791s;
+  --star-tail-length: 5.76em;
+  --top-offset: 24.16vh;
+  --fall-duration: 9.152s;
+  --fall-delay: 8.707s;
 }
 .star:nth-child(5) {
-  --star-tail-length: 5.04em;
-  --top-offset: 98.59vh;
-  --fall-duration: 9.305s;
-  --fall-delay: 7.417s;
+  --star-tail-length: 6.98em;
+  --top-offset: 51.65vh;
+  --fall-duration: 6.575s;
+  --fall-delay: 7.366s;
 }
 .star:nth-child(6) {
-  --star-tail-length: 6.41em;
-  --top-offset: 48.55vh;
-  --fall-duration: 9.959s;
-  --fall-delay: 6.676s;
+  --star-tail-length: 7.23em;
+  --top-offset: 0.89vh;
+  --fall-duration: 7.208s;
+  --fall-delay: 8.085s;
 }
 .star:nth-child(7) {
-  --star-tail-length: 6.27em;
-  --top-offset: 89.26vh;
-  --fall-duration: 6.326s;
-  --fall-delay: 2.577s;
+  --star-tail-length: 6.19em;
+  --top-offset: 77.69vh;
+  --fall-duration: 10.434s;
+  --fall-delay: 0.489s;
 }
 .star:nth-child(8) {
-  --star-tail-length: 6.66em;
-  --top-offset: 33.01vh;
-  --fall-duration: 7.189s;
-  --fall-delay: 6.439s;
+  --star-tail-length: 6.27em;
+  --top-offset: 76.73vh;
+  --fall-duration: 11.375s;
+  --fall-delay: 8.392s;
 }
 .star:nth-child(9) {
-  --star-tail-length: 5.67em;
-  --top-offset: 19.83vh;
-  --fall-duration: 9.714s;
-  --fall-delay: 2.947s;
+  --star-tail-length: 7.11em;
+  --top-offset: 31.77vh;
+  --fall-duration: 9.187s;
+  --fall-delay: 6.647s;
 }
 .star:nth-child(10) {
-  --star-tail-length: 5.09em;
-  --top-offset: 5.81vh;
-  --fall-duration: 11.346s;
-  --fall-delay: 1.015s;
+  --star-tail-length: 5.4em;
+  --top-offset: 95.98vh;
+  --fall-duration: 10.202s;
+  --fall-delay: 9.676s;
+}
+.star:nth-child(11) {
+  --star-tail-length: 5.46em;
+  --top-offset: 1.76vh;
+  --fall-duration: 8.176s;
+  --fall-delay: 9.594s;
+}
+.star:nth-child(12) {
+  --star-tail-length: 7.13em;
+  --top-offset: 20.83vh;
+  --fall-duration: 6.63s;
+  --fall-delay: 1.385s;
+}
+.star:nth-child(13) {
+  --star-tail-length: 5.95em;
+  --top-offset: 78.31vh;
+  --fall-duration: 6s;
+  --fall-delay: 7.805s;
+}
+.star:nth-child(14) {
+  --star-tail-length: 5.4em;
+  --top-offset: 32.8vh;
+  --fall-duration: 6.287s;
+  --fall-delay: 4.455s;
+}
+.star:nth-child(15) {
+  --star-tail-length: 6.22em;
+  --top-offset: 14.27vh;
+  --fall-duration: 6.598s;
+  --fall-delay: 9.228s;
 }
 
 .star::before, .star::after {
-  position: relative;
+  opacity: 30%;
+  position: absolute;
   content: "";
   top: 0;
   left: calc(var(--star-width) / -2);
@@ -291,9 +331,11 @@ div.doc {
   animation: blink 2s linear infinite;
 }
 .star::before {
+  opacity: 30%;
   transform: rotate(45deg);
 }
 .star::after {
+  opacity: 30%;
   transform: rotate(-45deg);
 }
 
@@ -315,15 +357,14 @@ div.doc {
     width: 0;
     opacity: 0;
   }
-} 
+}
 @keyframes blink {
   50% {
     opacity: 0.6;
   }
 }
-/*  End SHOOTING STAR background  */
 
-
+/* End Stars */
 
 
 
