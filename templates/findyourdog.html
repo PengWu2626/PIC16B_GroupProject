@@ -3,9 +3,6 @@
 {% block header %}
 <head>
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/findyourdogstyle.css') }}">
-<!-- Google Fonts -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
-
 <h3>{% block title %}{% endblock %}</h3>
 </head>
 {% endblock %}
@@ -49,25 +46,38 @@
   </div>
 
 <div class="split right"> <!-- Right side of screen-->
-    <h6 style ="font-family: Audiowide, sans-serif; font-size: 40px;">Matching Result</h6>
-    <br>
+    <h6>Matching Result</h6>
+
       <!-- check if find ant dog recommendations-->
         {% if find_any %}
+
+        <!-- loop to print 26 characteristics with user selected values-->
+        <div class="selected26characteristics">
+          {% for char, num in selected_26_characteristics.items() %}
+          <p>{{char}} &nbsp {{num[0:-1]}} &nbsp {{num[-1]}}</p>
+          {% endfor %}
+        </div>
+
         <!-- loop over each dog name in recommendations list-->
         {% for dog in dog_recommendations %}
         <br>
         <p style ="font-family: Audiowide, sans-serif; font-size: 20px;"><strong>{{dog[0]}}</strong></p>
-        <img style ="border-radius: 50px;" src='{{ dog[1]}}'  width="300" height="300"> 
-        <br>
-        <br>
+        <div class="glassBox">
+          <div class="glassBox__imgBox">
+            <img style ="border-radius: 50px;" src='{{dog[1][0]}}'  width="150" height="100"> 
+            <h3 class="glassBox__title">DogTime Link:</h3>
+          </div>
+          <div class="glassBox__content"> <a href ={{dog[1][1]}}>{{dog[0]}}</a></div>
+          </div>
+        <br><br>
         {% endfor %}
         <!-- end loop over each dog name in recommendations list-->
         {% else %}
         <p> No matching dog.</p>
         {% endif %}
         <!-- end check if find ant dog recommendations-->
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-
 </body>
 {% endblock %}
 

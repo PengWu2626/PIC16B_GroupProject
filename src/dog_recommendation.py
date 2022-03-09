@@ -122,6 +122,7 @@ def find_dog_recommendation(**characteristics):
   Return 
   ----------
   results: list; list of matching dog recommendations
+  characteristic_dict; dict;  keys: 26 dog characteristics; values: user-selected values
   """
 
   # get prepared dog dataframe with the dog characteristics mapper
@@ -133,7 +134,7 @@ def find_dog_recommendation(**characteristics):
   # loop over dictionary characteristics and update input number
   for key, val in characteristics.items():
     characteristic_dict[dog_map[key]]= val 
-
+    
  # the query string to evaluate 
   cmd =\
   """ 
@@ -166,4 +167,4 @@ def find_dog_recommendation(**characteristics):
 
   # find matching dogs
   results = df.query(f'{cmd}')['breed'].tolist()
-  return results
+  return results, characteristic_dict

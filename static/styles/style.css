@@ -24,12 +24,7 @@ body {
 h3 {
   color: #ffffff;
   font-family: sans-serif;
-  margin: 1rem 0;
   text-align: center;
-}
-
-h4{
-  color: firebrick;
 }
 
 p{
@@ -119,6 +114,131 @@ div.doc {
 }
 
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background:none;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-image: linear-gradient(180deg, pink 0%, lightblue 99%);
+  opacity: 20%;
+}
+
+h4{
+  color: orange;
+}
+
+.adaptability{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#adaptability1,#adaptability2, #adaptability3,#adaptability4,#adaptability5,#adaptability6{
+  margin: 15px;
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  -webkit-border-radius: 45px; 
+  border-radius: 45px; 
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 11px 11px 44px #808080, -11px -11px 44px #ffffff;
+  box-shadow: -35px 35px 68px 0px rgba(112, 112, 112, 0.5), inset 1px -1px 16px 0px rgba(112, 112, 112, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  opacity: 90%;
+}
+
+.all_around_friendliness{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#all_around_friendliness1, #all_around_friendliness2,#all_around_friendliness3,#all_around_friendliness4{
+  margin: 15px;
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  -webkit-border-radius: 45px; 
+  border-radius: 45px; 
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 11px 11px 44px #808080, -11px -11px 44px #ffffff;
+  box-shadow: -35px 35px 68px 0px rgba(112, 112, 112, 0.5), inset 1px -1px 16px 0px rgba(112, 112, 112, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  opacity: 90%;
+}
+
+
+.health_and_grooming_needs{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#health_and_grooming_needs1, #health_and_grooming_needs2, #health_and_grooming_needs3, #health_and_grooming_needs4, #health_and_grooming_needs5{
+  margin: 15px;
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  -webkit-border-radius: 45px; 
+  border-radius: 45px; 
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 11px 11px 44px #808080, -11px -11px 44px #ffffff;
+  box-shadow: -35px 35px 68px 0px rgba(112, 112, 112, 0.5), inset 1px -1px 16px 0px rgba(112, 112, 112, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  opacity: 90%;
+}
+
+
+.trainability{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#trainability1, #trainability2, #trainability3,#trainability4,#trainability5,#trainability6{
+  margin: 15px;
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  -webkit-border-radius: 45px; 
+  border-radius: 45px; 
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 11px 11px 44px #808080, -11px -11px 44px #ffffff;
+  box-shadow: -35px 35px 68px 0px rgba(112, 112, 112, 0.5), inset 1px -1px 16px 0px rgba(112, 112, 112, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  opacity: 90%;
+}
+
+.physical_needs{
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+#physical_needs1, #physical_needs2, #physical_needs3, #physical_needs4{
+  margin: 15px;
+  height: 300px;
+  width: 300px;
+  overflow-y: scroll;
+  -webkit-border-radius: 45px; 
+  border-radius: 45px; 
+  background: radial-gradient(#1b2735 0%, #090a0f 100%);
+  backdrop-filter: blur(6px);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: 11px 11px 44px #808080, -11px -11px 44px #ffffff;
+  box-shadow: -35px 35px 68px 0px rgba(112, 112, 112, 0.5), inset 1px -1px 16px 0px rgba(112, 112, 112, 0.6), inset 0px 11px 28px 0px rgb(255, 255, 255);
+  opacity: 90%;
+}
 
 
 
@@ -399,7 +519,8 @@ div.doc {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   transition: 0.5s;
   overflow: hidden;
 }
@@ -421,3 +542,4 @@ div.doc {
   transform: skewX(45deg) translateX(-150px);
 }
 /* End Shiney Glass */
+

@@ -190,10 +190,33 @@ def get_a_dog_image_from_dogtime(name):
     ----------
     dogtime_image_link: string; an image of the input dog breed from DogTime.
     """
-    dogtime_df = pd.read_csv('static/dogtime.csv')
+    dogtime_df = pd.read_csv('static/dogtime2.csv')
     df = dogtime_df[dogtime_df['breed']==name]
     dogtime_image_link = df['image_src'].unique()[0]
+
     return dogtime_image_link
+
+
+def get_dogtime_web_link(name):
+    """
+    This function will get a dog breed and return an associated URL link from the DogTime.
+
+    Parameters
+    ----------
+    name: string; a dog breed
+                            
+    Return 
+    ----------
+    dogtime_web_link: string; DogTime Url for the input dog
+    """
+    dogtime_df = pd.read_csv('static/dogtime2.csv')
+    df = dogtime_df[dogtime_df['breed']==name]
+    dogtime_web_link = df['dog_page'].unique()[0]
+
+    return dogtime_web_link
+
+
+
 
 
 @app.route('/intro')
@@ -220,8 +243,6 @@ def display_image(filename):
     if (num):
        return redirect(url_for('static', filename='faces/' + filename), code=301)
     return redirect(url_for('static', filename='uploads/' + filename), code=302)
-
-
 
 #  the first way to upload an image, so there are many repeated codes between uploads methods
 @app.route('/', methods=['POST'])
@@ -274,7 +295,6 @@ def upload_image():
         flash('Allowed image types are - png, jpg, jpeg, gif')
         return redirect(request.url)
     
-
 
 
 @app.route('/dragsave', methods=['POST'])
@@ -401,17 +421,20 @@ def findyourdog():
         characteristics = dog_recommendation.make_characteristics_map(selected_26_characteristics)
 
         # get list of matching dog for recommendation
-        recommendation_list = dog_recommendation.find_dog_recommendation(**characteristics)
+        recommendation_list, selected_26_characteristics = dog_recommendation.find_dog_recommendation(**characteristics)
 
         # 0: no matching recommended dog 
         find_any = bool(recommendation_list)
 
         # list of the recommended dog image link from DogTime
         dog_picture_links = [get_a_dog_image_from_dogtime(dog) for dog in recommendation_list]
+        
+        # dog web link
+        dog_web_links = [get_dogtime_web_link(dog) for dog in recommendation_list]
 
-        dog_recommendations = zip(recommendation_list, dog_picture_links)
+        dog_recommendations = list(zip(recommendation_list, list(zip(dog_picture_links,dog_web_links))))
 
-        return render_template('findyourdog.html', dogmap=dog_recommendation.prepare_recommendation_df()[1], recommendation_list=recommendation_list, find_any=find_any, dog_recommendations=dog_recommendations)
+        return render_template('findyourdog.html', dogmap=dog_recommendation.prepare_recommendation_df()[1], recommendation_list=recommendation_list, find_any=find_any, dog_recommendations=dog_recommendations, selected_26_characteristics=selected_26_characteristics)
 
 
 if __name__ == "__main__":
@@ -420,4 +443,3 @@ if __name__ == "__main__":
 
 
 # export FLASK_ENV=development; flask run
-
