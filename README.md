@@ -21,6 +21,8 @@ The full version has `slug size (482 MB) exceeds the soft limit (300 MB)` which 
 It's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer than 30 seconds to complete).
 Sometimes you can close and re-open your browser to solve the problem.
 
+This Web app uses a `lot of memory`, and it might be `crashed` if you use pictures to predict too many times at once. I suggest trying two images of predicting, then closing your browser and re-open it.
+
 **Full Version Webapp Link**:
 
 https://pic16b-dog-facial-recognition.herokuapp.com/
