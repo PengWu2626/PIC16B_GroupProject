@@ -190,7 +190,7 @@ def get_a_dog_image_from_dogtime(name):
     ----------
     dogtime_image_link: string; an image of the input dog breed from DogTime.
     """
-    dogtime_df = pd.read_csv('static/dogtime2.csv')
+    dogtime_df = pd.read_csv('static/dogtime.csv')
     df = dogtime_df[dogtime_df['breed']==name]
     dogtime_image_link = df['image_src'].unique()[0]
 
@@ -209,7 +209,7 @@ def get_dogtime_web_link(name):
     ----------
     dogtime_web_link: string; DogTime Url for the input dog
     """
-    dogtime_df = pd.read_csv('static/dogtime2.csv')
+    dogtime_df = pd.read_csv('static/dogtime.csv')
     df = dogtime_df[dogtime_df['breed']==name]
     dogtime_web_link = df['dog_page'].unique()[0]
 
