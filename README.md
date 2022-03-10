@@ -17,7 +17,7 @@ Thank you for your help!
 
 ## Full Version of This Project
 
-The full version has `slug size (490 MB) exceeds the soft limit (300 MB)` which may `affect boot time`.
+The full version has `slug size (482 MB) exceeds the soft limit (300 MB)` which may `affect boot time`.
 It's easy to get H12 errors ( H12 errors occur when an HTTP request takes longer than 30 seconds to complete).
 Sometimes you can close and re-open your browser to solve the problem.
 
