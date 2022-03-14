@@ -1,24 +1,24 @@
 **Group Contributions Statement**
 
-Peng:  
-- DogTime web [scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
+Peng Wu:  
+- [DogTime web scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
 - [get_sample_images_path.ipynb](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/get_sample_images_path.ipynb): This python code generated a CSV file that contains URL links for all images in the Stanford Dogs Dataset.
-- [dog_recommendation.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dog_recommendation.py): Get a user-selected number of 26 characteristics, and find out all matched dog breeds.
+- [dog_recommendation.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dog_recommendation.py): get all user-selected number of 26 characteristics, and find out all matched dog breeds.
 - [dogtime_barcharts.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dogtime_barcharts.py): make bar charts of input dog breed
 - part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
-- most part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html): prediction page
+- most part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html): prediction `view` page
 - most part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py) file.
-- [findyourdog.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/findyourdog.html): "Find Your Best Dog" page (an extra feature that is not in our initial proposal)
-- [drag_upload.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/drag_upload.html): "Drag Upload" page (an extra feature that is not in our initial proposal)
-- [doginformation.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/doginformation.html): "DogTime Information" page (an extra feature that is not in our initial proposal)
-- [display_uploads.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/display_uploads.html): "Click Gallery Upload" page (an extra feature that is not in our initial proposal)
+- [findyourdog.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/findyourdog.html): `Find Your Best Dog` page (an extra feature that is not in our initial proposal)
+- [drag_upload.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/drag_upload.html): `Drag Upload` page (an extra feature that is not in our initial proposal)
+- [doginformation.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/doginformation.html): `DogTime Information` page (an extra feature that is not in our initial proposal)
+- [display_uploads.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/display_uploads.html): `Click Gallery Upload` page (an extra feature that is not in our initial proposal)
 
 
 
 Weixin Ye:
-- created and analyzed the [dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model1.ipynb) using transfer-learning Xception with sequential API.
-- created and analyzed [another dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model2.ipynb) using transfer-learning Xception with functional API.
-- part of the [intro.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/intro.html): "Introduction" page
+- created and analyzed the [dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model1.ipynb) using Xception with sequential API.
+- created and analyzed [another dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model2.ipynb) using Xception with functional API.
+- part of the [intro.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/intro.html): `Introduction` page
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
 
 
@@ -30,11 +30,12 @@ Miao Wang:
 
 
 Jiamu Liu:
+- [face_detect.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/face_detect.py): `face detection model`
 - part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html)
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
 - part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
 - part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py)
-- [face_detect.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/face_detect.py): face detection model
+
 
 
 
