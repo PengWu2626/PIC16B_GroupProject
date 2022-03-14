@@ -49,7 +49,7 @@
 - Miao Wang
 - Jiamu Liu
 
-## Production Version on AWS
+## Public Version on AWS
 
 The **`public version`** is based on **`full version`**, the **`public version`** is running on AWS platform and avoids some issues/function limits on heroku.
 
