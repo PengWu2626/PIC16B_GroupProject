@@ -35,6 +35,7 @@
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
 - part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
 - part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py)
+- put models on the [web server](https://dogfr.nicholastec.com/data/)
 
 
 
