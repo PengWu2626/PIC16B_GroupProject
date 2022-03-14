@@ -1,4 +1,4 @@
-**Group Contributions Statement**
+## **Group Contributions Statement**
 
 **Peng Wu**:  
 - [DogTime web scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
