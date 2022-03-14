@@ -1,6 +1,6 @@
 **Group Contributions Statement**
 
-Peng Wu:  
+**Peng Wu**:  
 - [DogTime web scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
 - [get_sample_images_path.ipynb](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/get_sample_images_path.ipynb): This python code generated a CSV file that contains URL links for all images in the Stanford Dogs Dataset.
 - [dog_recommendation.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dog_recommendation.py): get all user-selected number of 26 characteristics, and find out all matched dog breeds.
@@ -15,7 +15,7 @@ Peng Wu:
 
 
 
-Weixin Ye:
+**Weixin Ye**:
 - created and analyzed the [dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model1.ipynb) using Xception with sequential API.
 - created and analyzed [another dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model2.ipynb) using Xception with functional API.
 - part of the [intro.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/intro.html): `Introduction` page
@@ -23,13 +23,13 @@ Weixin Ye:
 
 
 
-Miao Wang:
+**Miao Wang**:
 - draft of [suggestion.py](https://github.com/PengWu2626/pic16b_group_project_short_version/blob/main/src/suggestion.py) to find the matched dogs.
 - dog breed classification model 
 - another dog breed classification model 
 
 
-Jiamu Liu:
+**Jiamu Liu**:
 - [face_detect.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/face_detect.py): `face detection model`
 - part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html)
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
