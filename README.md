@@ -1,6 +1,7 @@
 ## **Group Contributions Statement**
 
-**Peng Wu**:  
+**Peng Wu**:
+
 - [DogTime web scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
 - [get_sample_images_path.ipynb](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/get_sample_images_path.ipynb): This python code generated a CSV file that contains URL links for all images in the Stanford Dogs Dataset.
 - [dog_recommendation.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dog_recommendation.py): get all user-selected number of 26 characteristics, and find out all matched dog breeds.
@@ -14,32 +15,28 @@
 - [display_uploads.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/display_uploads.html): `Click Gallery Upload` page (an extra feature that is not in our initial proposal)
 - developed the [full](https://pic16b-dog-facial-recognition.herokuapp.com/) and [short](https://pic16b-dogfr-short.herokuapp.com) versions of this project on the Heroku.
 
-
-
 **Weixin Ye**:
+
 - created and analyzed the [dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model1.ipynb) using Xception with sequential API.
 - created and analyzed [another dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model2.ipynb) using Xception with functional API.
 - part of the [intro.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/intro.html): `Introduction` page
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
 
-
-
 **Miao Wang**:
-- draft of [suggestion.py](https://github.com/PengWu2626/pic16b_group_project_short_version/blob/main/src/suggestion.py) to find the matched dogs.
-- dog breed classification model 
-- another dog breed classification model 
 
+- draft of [suggestion.py](https://github.com/PengWu2626/pic16b_group_project_short_version/blob/main/src/suggestion.py) to find the matched dogs.
+- dog breed classification model
+- another dog breed classification model
 
 **Jiamu Liu**:
+
 - [face_detect.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/face_detect.py): `face detection model`
 - part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html)
 - part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
 - part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
 - part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py)
 - put models on the [web server](https://dogfr.nicholastec.com/data/)
-
-
-
+- developed the [public](http://dogfr-env.eba-5mktcehb.us-west-1.elasticbeanstalk.com/) version of this project on AWS.
 
 # PIC16B_GroupProject - Dog Facial Recognition
 
@@ -51,6 +48,16 @@
 - Weixin Ye
 - Miao Wang
 - Jiamu Liu
+
+## Production Version on AWS
+
+The **`public version`** is based on **`full version`**, the **`public version`** is running on AWS platform and avoids some issues/function limits on heroku.
+
+**Public Version Webapp Link**:
+
+https://dogfr.nicholastec.com OR:
+
+http://dogfr-env.eba-5mktcehb.us-west-1.elasticbeanstalk.com/dragupload
 
 ## Full Version of This Project
 
