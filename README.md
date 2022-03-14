@@ -25,8 +25,8 @@
 **Miao Wang**:
 
 - draft of [suggestion.py](https://github.com/PengWu2626/pic16b_group_project_short_version/blob/main/src/suggestion.py) to find the matched dogs.
-- dog breed classification model
-- another dog breed classification model
+- dog breed classification [model using VGG16](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/vgg16%20and%20ResNet.ipynb)
+- another dog breed classification [model using ResNet](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/vgg16%20and%20ResNet.ipynb)
 
 **Jiamu Liu**:
 
