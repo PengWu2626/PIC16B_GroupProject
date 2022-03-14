@@ -12,7 +12,7 @@
 - [drag_upload.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/drag_upload.html): `Drag Upload` page (an extra feature that is not in our initial proposal)
 - [doginformation.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/doginformation.html): `DogTime Information` page (an extra feature that is not in our initial proposal)
 - [display_uploads.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/display_uploads.html): `Click Gallery Upload` page (an extra feature that is not in our initial proposal)
-- developed the [full](https://pic16b-dog-facial-recognition.herokuapp.com/) and [short](https://pic16b-dogfr-short.herokuapp.com) versions of this project on the Heroku app.
+- developed the [full](https://pic16b-dog-facial-recognition.herokuapp.com/) and [short](https://pic16b-dogfr-short.herokuapp.com) versions of this project on the Heroku.
 
 
 
