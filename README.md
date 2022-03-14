@@ -1,8 +1,42 @@
-- Q1: The slug size is too large to deploy on Heroku (details below). Is there a better way to solve this issue? (We tried to put models on the web server: https://dogfr.nicholastec.com/data/ but we have no how idea how to ask the web app load remotely. We also consider to deploy it on AWS instead of Heroku if possible.)
+**Group Contributions Statement**
 
-- Q2: Are there any suggestions for improvement? Like, improve web app responding latency? (We will add program installation instructions later and may add a user login system to hide each users' uploading history.)
+Peng:  
+- DogTime web [scrapper](https://github.com/PengWu2626/PIC16B_GroupProject/tree/main/DogTime_scraper)
+- [get_sample_images_path.ipynb](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/get_sample_images_path.ipynb): This python code generated a CSV file that contains URL links for all images in the Stanford Dogs Dataset.
+- [dog_recommendation.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dog_recommendation.py): Get a user-selected number of 26 characteristics, and find out all matched dog breeds.
+- [dogtime_barcharts.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/dogtime_barcharts.py): make bar charts of input dog breed
+- part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
+- most part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html): prediction page
+- most part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py) file.
+- [findyourdog.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/findyourdog.html): "Find Your Best Dog" page (an extra feature that is not in our initial proposal)
+- [drag_upload.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/drag_upload.html): "Drag Upload" page (an extra feature that is not in our initial proposal)
+- [doginformation.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/doginformation.html): "DogTime Information" page (an extra feature that is not in our initial proposal)
+- [display_uploads.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/display_uploads.html): "Click Gallery Upload" page (an extra feature that is not in our initial proposal)
 
-Thank you for your help!
+
+
+Weixin Ye:
+- created and analyzed the [dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model1.ipynb) using transfer-learning Xception with sequential API.
+- created and analyzed [another dog breed classification model](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/data/Model2.ipynb) using transfer-learning Xception with functional API.
+- part of the [intro.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/intro.html): "Introduction" page
+- part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
+
+
+
+Miao Wang:
+- draft of [suggestion.py](https://github.com/PengWu2626/pic16b_group_project_short_version/blob/main/src/suggestion.py) to find the matched dogs.
+- dog breed classification model 
+- another dog breed classification model 
+
+
+Jiamu Liu:
+- part of the [view.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/view.html)
+- part of the [index.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/index.html)
+- part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
+- part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py)
+- [face_detect.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/src/face_detect.py): face detection model
+
+
 
 # PIC16B_GroupProject - Dog Facial Recognition
 
