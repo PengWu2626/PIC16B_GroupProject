@@ -36,7 +36,7 @@
 - part of the [base.html](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/templates/base.html)
 - part of the [app.py](https://github.com/PengWu2626/PIC16B_GroupProject/blob/main/app.py)
 - put models on the [web server](https://dogfr.nicholastec.com/data/)
-- developed the [public](http://dogfr-env.eba-5mktcehb.us-west-1.elasticbeanstalk.com/) version of this project on AWS.
+- developed the [public](https://dog.ntec.app) version of this project on AWS.
 
 # PIC16B_GroupProject - Dog Facial Recognition
 
@@ -55,9 +55,7 @@ The **`public version`** is based on **`full version`**, the **`public version`*
 
 **Public Version Webapp Link (Recommend)**:
 
-https://dogfr.nicholastec.com OR:
-
-http://dogfr-env.eba-5mktcehb.us-west-1.elasticbeanstalk.com/dragupload
+https://dog.ntec.app
 
 ## Full Version of This Project
 
